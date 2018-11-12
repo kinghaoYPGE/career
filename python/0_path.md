@@ -77,41 +77,7 @@
 | 百度人脸识别课程                             | 服务访问方式、人脸识别、物体识别、文字识别、语音识别与合成、语言处理基础技术 |                                                              |                                                              |
 | 自然语言处理                                 | NLP 介紹、NLP种类、端对端深度学习模型、词袋、Seq2seq、Beam Search Decoding、Attention、LSTM、 LSTM 实作、文本分类、文本分类的方式、文本分类 CNN & RNN、文本生成、文本匹配、文本检索、文本生成图片、Chatbot 数据预处理、Chatbot 搭建模型、Chatbot 训练模型、Chatbot 训练模型、Chatbot测试模型、Chatbot 优化 |                                                              |                                                              |
 
-![img](https://dn-simplecloud.shiyanlou.com/uid/c5e305a8e9cb4329eac175649e0f4b33/1515061846849.png-wm)
 
-![1541854299474](C:\Users\kinghao\AppData\Local\Temp\1541854299474.png)
-
-![1541854525187](C:\Users\kinghao\AppData\Local\Temp\1541854525187.png)
-
-
-
-![img](http://www.itcast.cn/subject/pythonzly/images/box10_img1.jpg)
-
-![img](http://www.itcast.cn/subject/pythonzly/images/box10_img2.jpg)
-
-- ### 夯实基础
-
-  python编程从入门到精通，从单纯的语法理解到灵活应用解决实际问题，掌握Linux和Windows双系统开发环境，掌握常见数据结构和算法（时间复杂度计算，排序，搜索，栈，队列，二叉树），建立面向对象思维，能对问题进行抽象归类，了解设计模式，掌握单例模式和工厂模式
-
-- ### 后台开发
-
-  掌握Linux操作系统进程/线程管理和网络socket编程，熟练编写C/S客户机服务器通信程序，理解python的异步和协程，掌握关系型数据库MySQL和非关系型数据库MongoDB表设计与应用开发，掌握缓存服务器Redis的应用，能独立进行后台服务器的设计和开发
-
-- ### 前端开发
-
-  根据UI设计图进行PS切图制作，掌握html元素操作和css样式设定，熟练制作静态页面，掌握JavaScript编程和Jquery库，精通与后台服务器数据通信，制作轮播，渐入渐出，手风琴等页面特效，掌握Bootstrap、zepto等框架能进行快速开发，了解前端性能优化开发出适配性强的动态页面
-
-- ### web框架开发
-
-  融会贯通前端和后台所学知识，学习掌握Django web框架，提升开发效率，可进行前后端全栈web开发；学习微信公众号开发，掌握移动web领域开发技能，结合Tornado web框架，加强对http协议、session、跨域请求、安全传输的理解，掌握高并发web服务器开发，掌握Nginx部署和配置
-
-- ### 大数据开发
-
-  数据采集和数据分析方向，掌握爬虫工作原理和反爬虫机制（Selenium，PhantomJS，Tesseract），学习scrapy框架和scrapy-redis分布式框架，对各大知名网站数据进行采集，根据业务需求绘制html图表或Excel业务报表
-
-- ### 人工智能
-
-  了解深度学习常见算法，掌握监督学习训练模型的过程，熟悉常用机器深度学习框架的安装和部署，了解图像识别学习和语音识别学习的过程。掌握百度人工智能人脸识别、图像识别、文字识别、语音识别、语音合成、自然语言处理等服务接口的使用，了解百度服务机器人交互场景、定制服务开发。
 
 
 ![img](https://pic1.zhimg.com/80/v2-558910a2f864aa01abf1adfe6bf972ac_hd.jpg)
