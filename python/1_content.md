@@ -50,7 +50,33 @@
 
 ### 第7章 Git标签
 
-### 第8章 Git个性化
+### 第8章 Git自定义配置
+
+
+
+## 三、数据库
+
+## 1. SQL教程
+
+### 第1章 SQL语法
+
+### 第2章 SQL函数
+
+## 2. 关系型数据库
+
+### 第1章 MySQL基础
+
+### 第2章 SQLite基础
+
+### 第3章 Oracle基础
+
+## 3. NoSQL教程
+
+### 第1章 MongoDB基础
+
+### 第2章 Redis基础
+
+### 第3章 Memcached基础
 
 
 
@@ -62,7 +88,7 @@
 
 ### 第2章 Python环境安装
 
-### 第3章 Python基础语法
+### 第3章 Python基础语法与解释器
 
 ### 第4章 数据类型、变量与表达式
 
@@ -76,68 +102,55 @@
 
 ### 第9章 Python高级特性
 
+### 第10章 Python的Pythonic
+
 
 
 ## 二、Python进阶
 
-### 第1章 高级部分：面向对象
+### 第1章 Python函数式编程
 
-### 第2章 正则表达式与Xml与JSON
+### 第2章 Python面向对象
 
-### 第3章 Python的枚举与闭包
+### 第3章 Python异常、调试和测试
 
-### 第4章 函数式编程： 匿名函数、高阶函数、装饰器
+### 第4章 Python的文件处理和IO编程
 
-### 第5章 实战：原生爬虫
+### 第5章 Python进程和线程
 
-### 第6章 单元测试与打包发布
+### 第6章 Python正则表达式
 
-### 第7章 Pythonic与Python杂记
+### 第7章 JSON、XML和日期
 
+### 实战：编写原生爬虫
 
-## 三、 Python文件和IO处理
+### 第7章 Python常用模块
 
-### 第1章 文件简介
+### 第8章 Python虚拟环境
 
-### 第2章 Python文件基础操作
+### 第9章 Python图形化界面
 
-### 第3章 文件属性及OS模块使用
+### 第10章 Python网络编程
 
+### 第11章 Python电子邮件
 
+### 第12章 Python操作数据库和ORM
 
-## 四、Python异常处理
+### 第13章 Python异步IO和协程
 
-### 第1章 错误和异常概念
+### 第14章 Python Web基础
 
-### 第2章 错误和异常的处理方式
-
-### 第3章 标准异常和自定义异常
-
-
-
-## 五、Python集合模块
-
-### 第1章 tuple功能详解
-
-### 第2章 namedtuple功能详解
-
-### 第3章 defaultdict功能详解
-
-### 第4章 deque功能详解
-
-### 第5章 Counter功能详解
-
-### 第6章 OrderedDict功能详解
-
-### 第7章 ChainMap功能讲解
+### 实战：原生网站
 
 
 
-## 六、Python常用库
+## Python爬虫
 
-### 第1章 Python常用库大全
+### 第1章 urllib和requests基础
 
-https://github.com/ayamefing/awesome-python-cn
+### 第2章 Xpath和BeautifulSoap基础
+
+### 第3章 Scrapy爬虫框架
 
 
 
