@@ -1,26 +1,56 @@
 # 				目录
 
-
-
 # 预备知识
 
-### 一、Linux基础
+## 一、Linux基础
 
-- [猛戳这里](https://www.shiyanlou.com/courses/1/labs/1/document)
-- [友情链接](http://www.runoob.com/linux/linux-intro.html)
+### 第1章 Linux简介
 
-### 二、Git使用
+### 第2章 Linux应用
 
-- [猛戳这里](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137402760310626208b4f695940a49e5348b689d095fc000)
-- [猛戳这里](http://www.runoob.com/git/git-tutorial.html)
+### 第3章 Linux VS Windows
 
-- [Git图形化理解](https://learngitbranching.js.org/)
+### 第4章 获取Linux
+
+### 第5章 如何学习Linux
+
+### 第6章 Linux基本概念和操作
+
+### 第7章 Linux远程连接
+
+### 第8章 Linux用户和文件操作
+
+### 第9章 Linux磁盘操作
+
+### 第10章 Linux实用命令
+
+### 第11章 Linux软件安装
+
+### 第12章 Linux进程与日志
+
+### 第13章 Vim的使用
+
+### 第14章 Shell编程入门
 
 
-### 三、Vim使用
 
-- [猛戳这里](https://www.shiyanlou.com/courses/2)
+## 二、Git使用
 
+### 第1章 Git简介
+
+### 第2章 Git安装
+
+### 第3章 Git工作原理
+
+### 第4章 Git仓库操作
+
+### 第5章 远程仓库
+
+### 第6章 分支管理
+
+### 第7章 Git标签
+
+### 第8章 Git个性化
 
 
 
@@ -28,21 +58,23 @@
 
 ## 一、Python入门
 
-### 第1章 Python入门导学
+### 第1章 Python简介
 
 ### 第2章 Python环境安装
 
-### 第3章 Python的基本类型
+### 第3章 Python基础语法
 
-### 第4章 Python中“组”的概念与定义
+### 第4章 数据类型、变量与表达式
 
-### 第5章 变量与运算符
+### 第5章 Python字符串与编码
 
-### 第6章 分支、循环、条件与枚举
+### 第6章 Python集合类型
 
-### 第7章 包、模块、函数与变量作用域
+### 第7章 控制与循环
 
-### 第8章 Python函数
+### 第8章 Python函数、模块、包
+
+### 第9章 Python高级特性
 
 
 
