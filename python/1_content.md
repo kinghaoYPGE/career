@@ -58,25 +58,39 @@
 
 ## 1. SQL教程
 
-### 第1章 SQL语法
+### 第1章 什么是SQL
 
-### 第2章 SQL函数
+### 第2章 什么是数据库
 
-## 2. 关系型数据库
+### 第3章 MySQL基础
 
-### 第1章 MySQL基础
+### 第4章 SQLite入门
 
-### 第2章 SQLite基础
+### 第5章 Oracle入门（待学）
 
-### 第3章 Oracle基础
+### 第6章 SQL优化（待学）
 
-## 3. NoSQL教程
+## 2. NoSQL教程
 
-### 第1章 MongoDB基础
+### 第1章 NoSQL简介
 
-### 第2章 Redis基础
+### 第2章 MongoDB基础
 
-### 第3章 Memcached基础
+### 第3章 Redis基础
+
+### 第4章 Memcached基础
+
+### 第5章 RethinkDB介绍(扩展)
+
+## 3. Python操作数据库（待学）
+
+### 第1章 原始方式
+
+### 第2章 ORM方式
+
+## 4. 数据库高级操作（待学）
+
+### 第1章 数据库分库，分片，读写分离，集群等
 
 
 
@@ -138,19 +152,27 @@
 
 ### 第13章 Python异步IO和协程
 
-### 第14章 Python Web基础
+### 第14章 Python Web入门
 
-### 实战：原生网站
+### 实战：Python实现轻量级Web框架
 
 
 
 ## Python爬虫
 
-### 第1章 urllib和requests基础
+### 第1章 urllib和requests库的使用
 
-### 第2章 Xpath和BeautifulSoap基础
+### 第2章 Xpath和BeautifulSoap库的使用
 
 ### 第3章 Scrapy爬虫框架
+
+### 第4章 爬虫实战
+
+### 第5章 反爬机制（待学）
+
+### 第7章 动态网站爬取（待学）
+
+### 第6章 分布式异步爬虫Scrapy-redis（待学）
 
 
 
@@ -190,45 +212,27 @@
 
 ## 二、数据结构和常用算法
 
-### 第1章 常用数据结构
+### 第1章 链表（LinkedList）
 
-https://www.shiyanlou.com/courses/492
+### 第2章 二叉树（Binary Tree）
 
-https://algorithm.yuanbin.me/zh-hans/
+### 第3章 队列 （Queue）
 
-### 第2章 常用算法
+### 第4章 堆、栈 （Heap、 Stack）
 
-https://www.shiyanlou.com/courses/492
+### 第5章 向量、矩阵（vector、matrix）
 
-https://algorithm.yuanbin.me/zh-hans/
+### 第6章 冒泡排序
 
-### 第3章 编程算法实战
+### 第7章 选择排序
 
-https://github.com/apachecn/awesome-algorithm
+### 第8章 插入排序
 
-https://algorithm.yuanbin.me/zh-hans/
+### 第9章 归并排序
 
+### 第10章 快速排序
 
-
-# Python爬虫基础
-
-## 一、原生爬虫
-
-### 第1章 Python开发简单爬虫
-
-https://www.imooc.com/learn/563	
-
-https://www.imooc.com/learn/712
-
-### 第2章 Requests库
-
-https://www.imooc.com/learn/736
-
-## 二、使用框架
-
-### 第1章 Scrapy/Scrapy-redis
-
-### 第2章 分布式爬虫
+### 第11章 二分搜索
 
 
 
@@ -324,6 +328,8 @@ https://github.com/facert/awesome-spider
 
 集群，负载均衡，分布式，项目部署，docker，微服务，区块链，量化交易，渗透测试，并行计算，云计算
 
-Nginx, hadoop, spark, Ansible自动化...
+Nginx, hadoop, spark, Ansible自动化等
+
+*技术日新月异，但是技术的更新总是为了提高效率和解决难题*
 
 更新中...
