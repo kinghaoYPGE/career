@@ -132,6 +132,8 @@
 
 ### 第5章 Python进程和线程
 
+https://www.zhihu.com/question/19901763
+
 ### 第6章 Python正则表达式
 
 ### 第7章 JSON、XML和日期
@@ -158,21 +160,23 @@
 
 
 
-## Python爬虫
+# Python爬虫
 
 ### 第1章 urllib和requests库的使用
 
 ### 第2章 Xpath和BeautifulSoap库的使用
 
-### 第3章 Scrapy爬虫框架
+### 第3章 多线程爬虫
 
-### 第4章 爬虫实战
+### 第4章 Scrapy爬虫框架
 
-### 第5章 反爬机制（待学）
+### 第5章 爬虫实战
+
+### 第6章 反爬机制（待学）
 
 ### 第7章 动态网站爬取（待学）
 
-### 第6章 分布式异步爬虫Scrapy-redis（待学）
+### 第8章 分布式异步爬虫Scrapy-redis（待学）
 
 
 
@@ -236,61 +240,87 @@
 
 
 
-# Python Web基础
+# Python Web框架基础
 
-## 一、Web基础
+## 1. Flask基础
 
-### 第1章 Http和WSGI协议
+### 第1章 Flask简介和安装
 
-### 第2章 自定义Web框架（MVC）
+### 第2章 Flask简单程序 
 
-### 第3章 常用Web框架
+### 第3章 路由和静态文件
 
-### 第4章 Ajax异步请求
+### 第4章 模板引擎 
 
-### 第5章 异步Web框架
+### 第5章 请求和Web表单 
 
-### 第6章 Webservice/Restful API
+### 第6章 重定向和错误处理
 
+### 第7章 会话和响应
 
+### 第8章 消息闪现和日志
 
-## 二、 网络编程
+### 第9章 ORM操作数据库
 
-### 第1章 TCP/IP 协议
+### 第10章 Flask实现Restful API
 
-### 第2章 Socket
+### 第11章 Webservice和RPC
 
-### 第3章 UDP编程
-
-### 第4章 电子邮件（SMTP/POP3）
-
-
-
-## 三、 异步并发编程基础 
-
-### 第1章 线程和进程
-
-### 第2章 异步IO
-
-### 第3章 常用框架
-
-http://www.cnblogs.com/wupeiqi/articles/5040827.html
-
-https://www.shiyanlou.com/courses/1168
-
-## 四、数据库编程
-
-### 第1章 SQL基础
-
-### 第2章 Nosql基础
-
-### 第3章 Python操作数据库
-
-### 第4章 ORM实现
+### 第12章 Linux部署
 
 
 
-## Python项目实验
+## 2. Django基础
+
+### 第1章 Django简介和安装
+
+### 第2章 Django简单程序
+
+### 第3章 Django基本配置
+
+### 第4章 Django路由系统
+
+### 第5章 Django模板渲染
+
+### 第6章 Django中间件
+
+### 第7章 Django后台管理
+
+### 第8章 Django模型
+
+### 第9章 Django表单
+
+### 第10章 Ajax异步请求
+
+### 第11章 Cookie与Session
+
+### 第12章 Django分页
+
+### 第13章 缓存与序列化	
+
+### 第14章 CGI+Nginx+uwsgi部署
+
+
+
+## 3. Tornado基础（待学）
+
+
+
+## 4. 其他web框架（待学）
+
+
+
+## 5. 权限管理
+
+### 第1章 登录方式
+
+### 第2章 权限管理
+
+### 第3章 权限管理框架
+
+
+
+# Python项目实验
 
 https://zhuanlan.zhihu.com/p/23561159
 
@@ -314,9 +344,9 @@ https://github.com/facert/awesome-spider
 
 
 
-## Python人工智能基础
+# Python人工智能基础（待学）
 
-### 一、数据分析常用库
+### 一、数据分析
 
 ### 二、机器学习
 
@@ -326,7 +356,7 @@ https://github.com/facert/awesome-spider
 
 # 提升拔高
 
-集群，负载均衡，分布式，项目部署，docker，微服务，区块链，量化交易，渗透测试，并行计算，云计算
+SQL优化，集群，负载均衡，分布式，高并发异步系统，项目部署，docker，微服务，区块链，量化交易，渗透测试，并行计算，云计算，机器学习，深度学习，大数据，数据分析，数据挖掘，openstack
 
 Nginx, hadoop, spark, Ansible自动化等
 
