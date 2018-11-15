@@ -90,7 +90,15 @@
 
 ## 4. 数据库高级操作（待学）
 
-### 第1章 数据库分库，分片，读写分离，集群等
+### 第1章 数据库分库
+
+### 第2章 数据库分片中间件技术
+
+### 第3章 数据库读写分离，主从备份
+
+### 第4章 数据库分布式、集群架构
+
+### 第5章 数据库高并发架构
 
 
 
@@ -138,8 +146,6 @@
 
 #### 3. 多进程多线程
 
-https://www.zhihu.com/question/19901763
-
 ### 第6章 Python正则表达式
 
 ### 第7章 JSON、XML和日期
@@ -168,7 +174,9 @@ https://www.zhihu.com/question/19901763
 
 #### 4. 异步非阻塞
 
-### 第14章 Python Web入门
+### 第14章 Python Web入门和WSGI
+
+### 第15章 UWSGI和Nginx介绍
 
 ### 实战：Python实现轻量级Web框架
 
@@ -276,6 +284,8 @@ https://www.zhihu.com/question/19901763
 
 ### 第9章 ORM操作数据库
 
+### 第10章 OAuth 2.0授权
+
 ### 第10章 Flask实现Restful API
 
 ### 第11章 Webservice和RPC
@@ -314,43 +324,217 @@ https://www.zhihu.com/question/19901763
 
 ### 第14章 Nginx+uwsgi部署
 
+## 3. Sanic基础
+
+### 第1章 项目简介及架构设计
+
+### 第2章 HTTP 协议
+
+### 第3章 实现请求
+
+### 第4章 实现响应
+
+### 第5章 异步与协程
+
+### 第6章 实现 HTTP 服务器
+
+### 第7章 实现路由
+
+### 第8章 实现中间件和异常处理
+
+### 第9章  实现蓝图
+
+### 第10章 实现命令行解析
+
+### 第11章 配置数据库和模板
+
+### 第12章 使用 Sanic 框架完成一个 Web 应用
+
+## 4. Tornado基础（待学）
+
+### 第1章 初识tornado
+
+### 第2章 Application类 
+
+### 第3章 Application监听
+
+### 第4章 epoll轮询
+
+### 第5章 HttpServer对象
+
+### 第6章 IOStream和HttpConnection
+
+### 第7章 RequestHandler
+
+### 第8章 **路由系统** 
+
+### 第9章 Tornado模板
+
+### 第10章 **实用功能** 
+
+### 第11章 扩展功能
 
 
-## 3. Tornado基础（待学）
 
-## 4. 其他web框架（待学）
+## 5. 其他web框架（待学）
 
-### 第1章 Bottle基础
+### 第1章 Web.py/Web2py基础
 
-### 第2章 Sanic基础
-
-
-
-# Python项目实验
-
-https://zhuanlan.zhihu.com/p/23561159
-
-https://zhuanlan.zhihu.com/p/48961080
-
-https://zhuanlan.zhihu.com/p/49182617
-
-https://www.oschina.net/code/snippet_209440_19482
-
-https://www.shiyanlou.com/courses/1181
-
-https://www.shiyanlou.com/courses/914
-
-https://www.shiyanlou.com/courses/1139
-
-https://www.shiyanlou.com/courses/1144
-
-https://www.shiyanlou.com/courses/885
-
-https://github.com/facert/awesome-spider
+### 第2章 bottle基础
 
 
 
-# Python人工智能基础（待学）
+# Python实验课
+
+## 1. Python基础
+
+### 第1章 Python 图片转字符画和彩色字符
+
+### 第2章 2048小游戏
+
+### 第3章 贪吃蛇和俄罗斯方块 
+
+### 第4章 Python  excel 读取数据并绘制成图
+
+### 第5章 Python 创建照片马赛克 
+
+### 第6章 PythonChallenge 
+
+### 第7章 Python 生成个性二维码 
+
+### 第8章 Python 实现键值数据库 
+
+### 第9章 图片拼接与混合 
+
+### 第10章 实现文件备份
+
+### 第11章 Python3 实现推理游戏Bagels 
+
+### 第12章 Python 中文错别字高亮系统 
+
+### 第13章 Python 解决哲学家就餐问题  
+
+### 第14章 Python 定制词云 
+
+### 第15章 Python3 实现 Markdown 解析器 
+
+### 第16章 Python 实现简单滤镜 
+
+### 第17章  OpenCV 的面部特征交换
+
+### 第18章 Python 实现简单画板 
+
+### 第19章 Python3 图片隐写术 
+
+### 第20章 Python 的简易 Shell 实现 
+
+### 第21章 OpenCV 视频转字符动画 
+
+### 第22章 Python实现Zip文件的暴力破解 
+
+### 第23章 Python3 实现命令行动态进度条 
+
+### 第24章 基于PyQt5 实现地图中定位相片拍摄位置 
+
+### 第25章 Python3 实现色情图片识别 
+
+### 第26章 Python实现3D建模工具 
+
+### 第27章 Python 实现端口扫描器  
+
+### 第28章 Python 破解验证码 
+
+### 第29章 Python文本解析器 
+
+## 2. Python爬虫
+
+### 第1章 火车票查询工具
+
+### 第2章 多线程爬取斗图网站
+
+### 第3章 Python 解决租房问题 
+
+### 第4章Python 网站信息爬虫
+
+### 第5章 Python 二手房信息爬取
+
+### 第6章 使用 Python3 编写 Github 自动周报生成器 
+
+### 第7章 Python 实现英文新闻摘要自动提取 
+
+### 第8章 Python实现网站模拟登陆 
+
+### 第9章 Python爬取豆瓣电影
+
+### 第10章 微信聊天机器人 
+
+### 第11章 Flask 及爬虫实现微信娱乐机器人 
+
+
+
+## 3. Python 网络编程
+
+### 第1章 文字聊天室 
+
+### 第2章 Python 实现类似 Redis 数据库 
+
+### 第3章 Python 实现 Redis 异步客户端 
+
+### 第4章 Python3使用 XML-RPC共享文件  
+
+### 第5章 Python 实现一个轻量型数据库 
+
+### 第6章 Python 实现简单邮件客户端  
+
+### 第7章 Python3实现简单的FTP认证服务器 
+
+### 第8章 PyQt 实现简易浏览器 
+
+### 第9章 Python3基于Scapy实现DDos 
+
+### 第10章 基于 TCP 的 python 聊天程序 
+
+### 第11章 Python实现简易局域网视频聊天工具 
+
+### 第12章 SendCloud 的邮箱验证 
+
+### 第13章 Python3 实现可控制肉鸡的反向Shell 
+
+### 第14章 Python 实现 FTP 弱口令扫描器 
+
+## 3. Python Web开发
+
+### 第1章 实现简单web服务器模板引擎 
+
+### 第2章 基于 Django 实现问答社区 
+
+### 第3章 基于 Django 实现 Upwork 众包网站 
+
+### 第4章 开发在线问答系统 
+
+### 第5章 Flask 框架搭建个人博客 
+
+### 第6章 Django文件分享系统 
+
+### 第7章 Flask构建Web后台管理应用  
+
+### 第8章 Python 实现密码强度检测器 
+
+### 第9章 使用 Github Pages 和 Hexo 搭建独立博客 
+
+### 第10章 Flask 与 MySQL 实现番剧推荐系统 
+
+### 第11章 Flask 与 RethinkDB 实现TODO List 
+
+### 第12章 Flask 实现简单聊天室 
+
+### 第13章 django开发的综合成绩管理系统
+
+### 
+
+
+
+# Python人工智能基础（重新思考编程）
 
 ### 一、数据分析
 
