@@ -132,6 +132,12 @@
 
 ### 第5章 Python进程和线程
 
+#### 1. 单进程多线程
+
+#### 2. 多进程单线程
+
+#### 3. 多进程多线程
+
 https://www.zhihu.com/question/19901763
 
 ### 第6章 Python正则表达式
@@ -146,13 +152,21 @@ https://www.zhihu.com/question/19901763
 
 ### 第9章 Python图形化界面
 
-### 第10章 Python网络编程
+### 第10章 Python网络编程和CGI
 
-### 第11章 Python电子邮件
+### 第11章 PythonUDP和电子邮件
 
 ### 第12章 Python操作数据库和ORM
 
 ### 第13章 Python异步IO和协程
+
+#### 1. 同步阻塞
+
+#### 2. 同步非阻塞
+
+#### 3. 异步阻塞
+
+#### 4. 异步非阻塞
 
 ### 第14章 Python Web入门
 
@@ -298,25 +312,17 @@ https://www.zhihu.com/question/19901763
 
 ### 第13章 缓存与序列化	
 
-### 第14章 CGI+Nginx+uwsgi部署
+### 第14章 Nginx+uwsgi部署
 
 
 
 ## 3. Tornado基础（待学）
 
-
-
 ## 4. 其他web框架（待学）
 
+### 第1章 Bottle基础
 
-
-## 5. 权限管理
-
-### 第1章 登录方式
-
-### 第2章 权限管理
-
-### 第3章 权限管理框架
+### 第2章 Sanic基础
 
 
 
