@@ -588,7 +588,7 @@
 
 SQL优化，集群，负载均衡，分布式，高并发异步系统，项目部署，docker，微服务，区块链，量化交易，渗透测试，并行计算，云计算，机器学习，深度学习，大数据，数据分析，数据挖掘，openstack
 
-Nginx, hadoop, spark, Ansible自动化等
+Nginx, hadoop, spark, Ansible自动化, DevOps等
 
 *技术日新月异，但是技术的更新总是为了提高效率和解决难题*
 
