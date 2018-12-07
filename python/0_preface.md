@@ -70,7 +70,7 @@ IT界百科全书，这是一个外国网站。里面你能遇到的问题基本
 
 外国的百度全科，但是维基百科更加全面。
 
-2.[思否](https://segmentfault.com/) 3.[知乎 ](https://www.zhihu.com/)4.[CSDN ](https://www.csdn.net/)5.[简书 ](http://www.jianshu.com/)6.[开源中国](http://www.oschina.net/)
+3.[思否](https://segmentfault.com/) 4.[知乎 ](https://www.zhihu.com/)5.[CSDN ](https://www.csdn.net/)6.[简书 ](http://www.jianshu.com/)7.[开源中国](http://www.oschina.net/) 8.博客园
 
 ...
 
@@ -90,7 +90,11 @@ IT界百科全书，这是一个外国网站。里面你能遇到的问题基本
 
 相关的工具还有很多需要自己去挖掘，或者自己去写一个小工具。
 
+#### 4. Online judge网站
 
+leetcode, linkcode等
+
+#### 5. 相关技术官方网站
 
 # 二、计算机体系
 
