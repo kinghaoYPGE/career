@@ -78,28 +78,3 @@
 | 自然语言处理                                 | NLP 介紹、NLP种类、端对端深度学习模型、词袋、Seq2seq、Beam Search Decoding、Attention、LSTM、 LSTM 实作、文本分类、文本分类的方式、文本分类 CNN & RNN、文本生成、文本匹配、文本检索、文本生成图片、Chatbot 数据预处理、Chatbot 搭建模型、Chatbot 训练模型、Chatbot 训练模型、Chatbot测试模型、Chatbot 优化 |                                                              |                                                              |
 
 
-
-
-![img](https://pic1.zhimg.com/80/v2-558910a2f864aa01abf1adfe6bf972ac_hd.jpg)
-
-![img](https://pic1.zhimg.com/80/v2-d2ce52170cd5510ba7ff1e95e4b197f0_hd.jpg)
-
-![img](https://pic3.zhimg.com/80/v2-801c54ada17a6e38b2d7d7e6339929ee_hd.jpg)
-
-![img](https://pic4.zhimg.com/80/v2-4266dffc660ab43cc9bd4be49ce11227_hd.jpg)
-
-![img](https://pic3.zhimg.com/80/v2-a03d78b0e200b9f7095adc16db12c80a_hd.jpg)
-
-![img](https://pic2.zhimg.com/80/v2-b2547525f4a1583344c973bd1fdb8c51_hd.jpg)
-
-
-
-相关链接：
-
-https://zhuanlan.zhihu.com/p/23561159
-
-http://www.itcast.cn/course/Python.shtml
-
-http://www.runoob.com/python3/python3-tutorial.html
-
-https://www.cnblogs.com/wupeiqi/articles/4938499.html
