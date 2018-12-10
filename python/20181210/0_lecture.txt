@@ -1,0 +1,65 @@
+1. Linux简介和历史
+  GNU/Linux的由来
+  Linux图形化（X window System协议/Xorg-->X Client)
+  什么是终端（对应者/dev/tty设备)
+  什么是shell(Linux内核的壳，命令解析器，也是脚本语言， shell有bash, zsh等)
+
+2. Linux命令
+  命令行包含输入和输出
+  2.1 Linux基本命令
+    TAB：自动补全（命令，命令参数和目录）
+    ctrl+c/a/u/d/k: 强制终止/命令行头/清除命令/退回和退出命令行/删除光标所在位置到行末
+    上，下键: 命令历史
+     通配符:*(任意字符),?(任意一个字符), {0..9}(0到9所有字符)...
+     帮助文档: man 如： man ls
+     touch: 创建空白文件/更新文件修改时间
+     ls: 查看目录下的内容
+     ls -l(简写: ll)
+     ls -a(显示隐藏文件)
+     ls -h(格式显示)
+     ls -s(默认排序显示)
+     apt-get安装软件
+
+3. 用户管理
+  3.1 查看用户： who am i/whoami/who -m
+        创建用户：adduser
+        切换用户：su,  sudo, su -l
+  3.2 用户组：adduser会默认创建一个和用户名一样的组
+        查看组：groups, cat /etc/group
+        修改组：usermod -G 组名 用户名
+        删除用户：deluser 用户名 --remove-home(删除home目录)      
+  
+4. 文件权限
+  4.1 ls -l列出文件的详细信息的含义
+  4.2 修改文件所有者：chown 新用户名 文件名
+  4.3 修改文件权限：
+    1： 二进制方式 
+      r(4),w(2),x(1) 如：chmod 751 test.py(rwxr-x--x)
+    2：赋值方式
+      chmod (g/o/u)(+/-)(rwx) test.py (g: groups, o: others, u: user)
+ 
+5. 目录和文件基本操作
+  5.1 目录结构：要依据FHS标准去使用目录结构
+        目录路径：用于定位资源，绝对路径(/开头)和相对路径(./或../开头)
+        进入目录: cd, cd ~, cd -, cd ../
+        获取当前路径: pwd
+  5.2 新建文件：touch, vim
+        新建目录：mkdir
+        新建级联目录：mkdir -p
+        复制文件：cp
+        复制目录：cp -r
+        删除文件：rm
+        删除只读文件：rm -f
+        删除目录：rm -r
+        删除一切：rm -rf(谨慎使用)
+        移动文件/单个重命名：mv
+        批量重命名：rename
+        查看文件：cat 
+        显示序号查看：cat -n
+        分页查看：more, less
+        头尾查看：head, tail
+        指定行查看：tail -n 行数 文件名
+        日志显示：tail -f log.txt(常用)
+        查看文件类型：file 文件名
+        编辑文件：vim
+                         

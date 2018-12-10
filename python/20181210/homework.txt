@@ -1,0 +1,4 @@
+1. 创建三个用户,把你自己的用户添加到sudo权限
+2. 创建三个文件test.c->test, test.java->test.class, test.py(可执行脚本)
+3. test.c只能你自己rwx, test只能你自己--x, 其他用户---，test.class你自己可以rwx, 同一个组的可以r-x, 其他用户可以r--
+4. test.py所有用户都可以rwx
