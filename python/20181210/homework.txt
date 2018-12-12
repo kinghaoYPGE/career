@@ -2,3 +2,4 @@
 2. 创建三个文件test.c->test, test.java->test.class, test.py(可执行脚本)
 3. test.c只能你自己rwx, test只能你自己--x, 其他用户---，test.class你自己和同一个组的可以--x, 其他用户---，test.java你自己和同一个组的可以rwx, 其他用户r--
 4. test.py所有用户都可以rwx
+

@@ -1,0 +1,4 @@
+1. 创建一个文件夹archive，然后用zip和tar方式打包压缩成 archive.zip(加密)和archive.tar.gz， 分别解压到home目录下的zip_test和targz_test目录下
+2. 创建当前用户，添加一个batch job， 要求每分钟把/var/log/alternatives.log文件备份(cp)到当前用户home/temp目录里。格式：年月日时分秒
+3 使用 du -hd [num] ~ | sort， 了解df和mount
+4. 多使用顺序命令和管道命令，了解命令&&和||的用法， grep, cut, wc, sort, uniq的用法
