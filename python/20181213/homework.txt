@@ -1,0 +1,1 @@
+1 在home目录下新建一个test.sh要求输出Hello Shell。复制test.sh为test2.sh。修改test2.sh将输出保存到test.txt文件中。新建cleantest.sh清空test.sh的内容
