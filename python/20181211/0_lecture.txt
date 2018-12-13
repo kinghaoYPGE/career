@@ -1,0 +1,21 @@
+1. 环境变量
+  1.1 什么是变量: 用于记录计算内存中一个值(比如1, 'abc')，可以方便运算
+        变量有变量类型和变量作用域
+  1.2 shell变量：shell本身就是一门脚本语言，所以也有自己的变量。如declare tmp(自定义一个变量)或tmp=tempvariable
+        通过echo $tmp可以取变量的值，注意变量名不要以数字开头
+  1.3 环境变量：变量的作用域在当前进程(shell父进程)和其子进程下
+  1.4 shell变量种类：自定义变量，Shell内置变量，环境变量
+		set（显示当前shell的所有变量), env(当前用户相关的变量), export(可将自定义变量导出环境变量)
+		可以使用vimdiff查看三个命令的区别(temp=temp_variable;export temp_env=temp_env_variable;env|sort>env.txt,export|sort>export.txt;set|sort>set.txt;vimdiff env.txt export.txt set.txt)
+  1.5 永久生效：export导出的环境变量在shell关闭后就失效了，可以通过修改文件(/etc/profile(所有用户)，~/.profile(当前用户))
+  1.6 环境变量PATH：命令的执行路径，echo $PATH, 自定义命令添加到PATH中(PATH=$PATH:自定义命令的绝对路径)
+        这种方式是临时的，shell关闭后就失效了，可以通过修改~/.profile或echo "PATH=$PATH:自定义命令的绝对路径">>.zshrc;source .zshrc, unset可以删除变量
+
+2. 搜索文件
+  2.1 where, whereis, which: 可以用来查看可执行文件或者命令
+  2.2 find：搜索文件, sudo find 指定目录 -name 文件名(可以使用通配符)
+
+3. Python变量介绍
+    变量的基本类型：int, float, complex(了解), str, list(值可变), tuple(值不可变), set(集合), dict(字典key-value), bool(都可以转换成bool类型)
+    组的概念：str, list, tuple, set, dict
+    序列的概念：str, list, tuple可以通过下标访问元素
