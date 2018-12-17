@@ -1,0 +1,13 @@
+1 版本控制系统
+2 Git简介：Git是一个分布式版本控制系统
+  2.1 集中式VS分布式
+  2.2 安装Git：安装完成后，设置账号和email
+  2.3 创建版本库：创建一个目录并进入该目录，然后git init
+    2.3.1 添加文件到版本库：如git add readme.txt->git commit -m 'add readme txt file'
+  2.4 查看历史：git status; git diff readme.txt; git log [--pretty=oneline]
+        版本回退：git reset --hard HEAD^; git reset --hard 版本号(前几位就行); git版本回退实际上是改变指向当前版本的HEAD指针; git reflog
+  2.5 工作区和暂存区
+  2.6 管理修改：git diff HEAD --readme.txt; 每次修改，如果不用git add添加到暂存区中，就不会commit
+  2.7 撤销修改：git checkout -- readme.txt(撤销工作区修改)；git reset HEAD readme.txt(撤销暂存区修改), git reset --hard HEAD^(撤销版本库修改)
+  2.8 删除文件：删除文件也是修改；git rm test.txt; git commit -m 'remove test.txt'
+  2.9 撤销删除：和撤销修改一样
