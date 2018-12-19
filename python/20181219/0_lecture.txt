@@ -1,0 +1,34 @@
+1 远程仓库
+  1.1 Github使用：
+	创建SSH key：先查看有没有.ssh目录，没有就使用ssh-keygen -t rsa -C 'your git email'
+	登陆Github：设置SSH key
+	创建仓库：创建好后，执行git remote add origin 'repo ssh address'; git push -u origin master
+	克隆仓库：从零开发，先创建远程库，从远程库克隆执行git clone 'repo ssh address'
+	SSH和Https: 一般开发不仅使用SSH协议有时也会使用Https协议
+
+2 分支管理
+  2.1 创建和合并分支
+	git checkout -b dev：创建dev分支并切换到dev分支上；相当于git branch dev(创建分支);git checkout dev(切换分支)
+	git branch：查看当前分支
+	git merge dev：切换到master分支后，合并dev到master分支上
+	git branch -d dev：删除dev分支
+  2.2 解决冲突
+	git无法自动合并分支时，需要先解决冲突，再提交
+	git log --graph：分支合并历史
+  2.3 分支管理策略
+	git merge --no-ff-m 'merge with no-ff' dev：合并分支禁用fast-forward模式会多一个commit
+	分支策略：
+		master分支用来对外发布新版本，通常比较稳定
+		dev分支是用来开发的，通常是不稳定的
+		在dev分支上，每个开发人员创建自己的分支然后合并到dev分支上
+	bug分支：用于修复bug的临时分支，修复完，合并删除
+		git stash：比如当前在dev分支上的工作没有完成，需要修复一个master分支的bug，这个时候可以使用git stash先保存当前环境，然后切换到master分支新		建一个bug临时分支issue-101，修复后合并删除，再切换到dev分支继续干活，先使用git stash list，接着使用git stash apply或者git stash pop或git stash 		apply stash@{0}
+	feature分支：当添加一个新功能时，你要新建一个feature分支，在上面开发，完成后，合并删除该分支， git checkout -b feature-vulcan, 提交，切换到dev分支合		并删除
+	多人合作：
+		git remote [-v]：查看远程仓库
+		gti push origin maser: 推送到远程仓库并指定分支，如git push origin dev
+		git pull：与远程仓库同步
+		git branch --set-upstream-to=origin/dev dev：指定本地dev和远程dev分支链接
+		git rebase(了解)：整理提交历史
+
+		
