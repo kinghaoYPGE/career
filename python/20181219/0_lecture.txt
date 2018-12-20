@@ -23,7 +23,7 @@
 		在dev分支上，每个开发人员创建自己的分支然后合并到dev分支上
 	bug分支：用于修复bug的临时分支，修复完，合并删除
 		git stash：比如当前在dev分支上的工作没有完成，需要修复一个master分支的bug，这个时候可以使用git stash先保存当前环境，然后切换到master分支新		建一个bug临时分支issue-101，修复后合并删除，再切换到dev分支继续干活，先使用git stash list，接着使用git stash apply或者git stash pop或git stash 		apply stash@{0}
-	feature分支：当添加一个新功能时，你要新建一个feature分支，在上面开发，完成后，合并删除该分支， git checkout -b feature-vulcan, 提交，切换到dev分支合		并删除
+	feature分支：当添加一个新功能时，你要新建一个feature分支，在上面开发，完成后，合并删除该分支， git checkout -b feature-vulcan, 提交，切换到dev分支合并删除, git branch-D feature-vulcan(强制删除分支)
 	多人合作：
 		git remote [-v]：查看远程仓库
 		gti push origin maser: 推送到远程仓库并指定分支，如git push origin dev

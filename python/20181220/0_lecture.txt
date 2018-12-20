@@ -1,0 +1,22 @@
+1 标签管理
+  1.1 创建标签：切换到需要打标签的分支上
+	git tag, git tag v1.0, git tag v1.0 commit_id, git tag -a v1.0 -m 'this is v1.0' commit_id
+	git show v1.0
+  1.2 操作标签：git tag -d v0.9(删除本地标签), git push origin v1.0, git push origin --tags(推送标签到远程), git tag -d v0.9; git push origin :refs/tags/v0.9(删除本地标签和远程标签)
+
+2 Github使用
+  2.1 开源项目：先fork再clone就可以参与开源项目
+3 码云使用：和Github基本一致
+4 自定义Git
+  4.1 忽略特殊文件：修改.gitignore文件，然后提交，git add -f hello.pyc(强制提交), git check-ignore -v hello.pyc
+  4.2 配置别名：git config --global alias. [st status/co checkout/ci commit/br branch/unstage 'reset HEAD'/last 'log-1']
+  4.3 仓库配置文件：.git/config
+  4.4 用户git配置文件：~/.gitconfig
+5 搭建git服务器
+  下载git
+  sudo adduser git
+  创建证书登录：cat id_rsa.pub > /home/git/.ssh/authorized_keys, 一行一个
+  选定目录如/srv/sample.git，在/srv目录下sudo git init --bare sample.git, sudo chown -R git:git sample.git
+  禁用shell登陆：修改/etc/passwd文件如：...git:/bin/bash->...git:/usr/bin/git-shell
+
+  克隆远程仓库
