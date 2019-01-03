@@ -4,6 +4,7 @@ python变量作用域
 2 局部变量不会被外部引用
 3 局部没有会去找上一级
 4 global会使局部变量变成全局变量
+5 python没有块级作用域(如if, for, while)
 """
 # a = 20
 def fun1():

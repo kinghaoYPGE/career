@@ -1,0 +1,5 @@
+1 变量作用域补充
+  1.1 python没有块级作用域(如if, while, for)
+
+2 python练习
+  2.1 数独游戏
