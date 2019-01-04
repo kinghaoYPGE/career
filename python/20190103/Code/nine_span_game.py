@@ -37,7 +37,6 @@ def fill_in(m, n, numbers):
     # 内积 i是每一行的索引，j是每一列的索引
     for i, j in list(product(list(range(n)), repeat=2)):
         random.shuffle(numbers)  # 随机打乱list元素
-        
         for x in numbers:
             if check_rule(m, x, borad, i, j):
                 # 如果有符合规则的数字就开始赋值并停止，然后开始下一次的元素赋值
