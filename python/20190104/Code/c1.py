@@ -33,8 +33,4 @@ print(student_name, student_age, student_score)
 # print(Student)
 # Student.learn()
 student.learn()
-
-
-
-
     
