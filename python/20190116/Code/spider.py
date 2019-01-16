@@ -6,7 +6,7 @@ import re
 
 class Spider(object):
     cls_url = r'https://www.panda.tv/cate/lol'
-    cls_root_pattern = r'<div class="video-info">([\s\S]*?)</div>'
+    cls_root_pattern = r'<div class="video-info">(.*?)</div>'
     cls_info_pattern = r'</i>([\s\S]*?)</span>'
 
     def __init__(self, url=cls_url, root_pattern=cls_root_pattern, info_pattern=cls_info_pattern):
@@ -20,7 +20,7 @@ class Spider(object):
         return htmls
 
     def analysis(self, htmls):
-        root_html = re.findall(self.root_pattern, htmls)
+        root_html = re.findall(self.root_pattern, htmls, flags=re.S)
         arthurs = []
         for html in root_html:
             # 提取主播名字
