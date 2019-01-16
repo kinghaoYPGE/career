@@ -3,7 +3,8 @@
 """
 import re
 s = 'life 1is 0short, 2i u3se python!'
-# r = re.findall('python', s) 普通字符
+# 普通字符
+# r = re.findall('python', s) 
 # new_str = ''
 # for i in s:
     # try:
@@ -22,7 +23,8 @@ r = re.findall('b[^cd]e', s2)
 s3 = 'abcdefg'
 r = re.findall('[a-g]', s3)
 r = re.findall('[0-9]', s)
-# r = re.findall('\d', s3) 概括字符集
+# 概括字符集
+# r = re.findall('\d', s3) 
 s4 = 'fie1^%$*s2dfjc ad3sf  sfd  as     d_)'
 r = re.findall('[^A-Za-z0-9_]', s4)
 # \w: 数字和字母, \W: 非数字和字母
