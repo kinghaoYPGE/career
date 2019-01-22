@@ -18,6 +18,14 @@ d.a
 d.a = '1'
 """
 class Dict(dict):
+    """
+    this is my dict
+    example:
+    >>> d1 = Dict()
+    >>> d1['x'] = 1
+    >>> d1.x
+    1
+    """
     def __init__(self, **kw):
         super().__init__(**kw)
     
@@ -31,6 +39,25 @@ class Dict(dict):
 
     def __setattr__(self, key, value):
         self[key] = value
+
+def abs(n):
+    """
+    this is abs function
+    example:
+    >>> abs(1)
+    1
+    >>> abs(-1)
+    1
+    >>> abs(0)
+    0
+    """
+    return n if n>=0 else (-n)
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+    # print(abs.__doc__)
+
+
 
     
 

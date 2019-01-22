@@ -14,6 +14,7 @@ output: 把内存计算后的数据写入到磁盘(磁盘文件, 网络等)
 # 读写文件是请求操作系统打开一个文件对象
 
 # 读文件
+
 try:
     f = open(r'C:\develop\Inspiration\career\python\20190121\Code\file\test.txt')
     # print(type(f))
@@ -27,11 +28,17 @@ finally:
 
 # with 语句代替try语句
 with open(r'C:\develop\Inspiration\career\python\20190121\Code\file\test.txt', 'r') as f:
+    # 一次性读取所有内容到内存中
     # print(f.read())
+    # 每次读指定字节
+    # r = f.read(20)
+    # print(r)
     # read方法会一次性读取文件中所有内容到内存中, readline方法可以一行一行的读取
-    line = f.readline()
-    lines = f.readlines()
-    print(lines)
+    # readline一般用于读取配置文件
+    # line = f.readline()
+    # lines = f.readlines()
+    # print(lines)
+
 
 
 
