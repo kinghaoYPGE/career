@@ -16,7 +16,7 @@ list_b = '1223471034710345610340'
 r = [(0 if int(i)<=2 else 9) for i in list_b]
 print(r)
 
-# 便函数
+# 偏函数
 r = int('1000101001', base=2)
 # print(bin(r))
 print(r)

@@ -38,6 +38,7 @@ r = f1()
 r2 = f2()
 r3 = f3()
 # print(r, r2, r3)
+# print(f1.__closure__[0].cell_contents)
 
 # 定位蚂蚁在沙漠的位置如: 0->1->3->5-?
 # 非闭包方式
