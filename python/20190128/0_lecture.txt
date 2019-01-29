@@ -1,0 +1,11 @@
+1 进程和线程
+2 分布式进程
+3 多进程、多线程实现多任务爬虫
+  需求: 爬取豆瓣电影top250到文件中, 并打印处理时间
+4 内建模块补充:
+  4.1 base64
+  4.2 struct
+  4.3 hashlib和hmac
+  4.4 contextlib
+  4.5 urllib
+  4.6 xml和HTMLParser
