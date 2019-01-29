@@ -66,10 +66,10 @@ def print_board(borad, m=3, count=5):
         x = random.choice(numbers)
         borad_copy[x][j] = None
     
-    spacer = "++-----+-----+-----+-----+-----+-----+-----+-----+-----++"
+    spacer = "++-----+-----+-----++-----+-----+-----++-----+-----+-----++"
     print(spacer.replace('-', '='))
     for i, line in enumerate(borad_copy):
-        print("||  {}  |  {}  |  {} ||  {}  |  {}  |  {} ||  {}  |  {}  |  {}  ||"\
+        print("||  {}  |  {}  |  {}  ||  {}  |  {}  |  {}  ||  {}  |  {}  |  {}  ||"\
         .format(*[cell or ' 'for cell in line]))
         if (i+1) % 3 == 0:
             print(spacer.replace('-', '='))
