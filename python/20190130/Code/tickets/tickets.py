@@ -50,21 +50,19 @@ class TrainCollection(object):
 
 def main():
     args = docopt(doc)
-    base_url = r'https://kyfw.12306.cn/otn/leftTicket/queryZ'
     train_date = args['<date>']
     from_station = stations.get(args['<from>'])
     to_station = stations.get(args['<to>'])
-    params_dict = {}
-    params_dict['leftTicketDTO.train_date'] = train_date
-    params_dict['leftTicketDTO.from_station'] = from_station
-    params_dict['leftTicketDTO.to_station'] = to_station
-    params_dict['purpose_codes'] = 'ADULT'
-    # 火车班次字典
+    base_url = r'https://kyfw.12306.cn/otn/leftTicket/queryZ'\
+               '?leftTicketDTO.train_date=%s'\
+               '&leftTicketDTO.from_station=%s'\
+               '&leftTicketDTO.to_station=%s'\
+               '&purpose_codes=ADULT'
+    # 得到火车班次信息
     r = requests.get(base_url, params=params_dict).json()
     free_trains = r['data']['result']
     free_place = r['data']['map']
     options = ''.join([k for k, v in args.items() if v is True])
-
     # 解析火车班次信息并以表格形式打印到控制台
     trains = TrainCollection(free_trains, free_place, options)
     table = trains.table()
