@@ -13,9 +13,9 @@ msg['From'] = _format_addr('kinghao<%s>' % from_addr)
 msg['To'] = _format_addr('zhangsan<%s>' % to_addr)
 msg['Subject'] = Header('this is test', 'utf-8').encode()
 # 输入SMTP地址
-smtp_server = 'smtp.qq.com'
 import smtplib
-server = smtplib.SMTP(smtp_server, 25)
+from smtplib import SMTP_SSL
+server = SMTP_SSL('smtp.qq.com')
 server.set_debuglevel(1)
 server.login(from_addr, password)
 server.sendmail(from_addr, [to_addr], msg.as_string())
