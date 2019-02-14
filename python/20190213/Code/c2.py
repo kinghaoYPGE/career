@@ -10,11 +10,6 @@ python操作mysql
 >>> conn = connector.connect(user='root', password='123456', database='mysql_test')
 >>> cur = conn.cursor()
 >>> cur.execute('create table user (id varchar(20) primary key, name varchar(20))')
->>> cursor.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])
-Traceback (most recent call last):
-  File "<pyshell#7>", line 1, in <module>
-    cursor.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])
-NameError: name 'cursor' is not defined
 >>> cur.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])
 >>> cur.rowcount
 1

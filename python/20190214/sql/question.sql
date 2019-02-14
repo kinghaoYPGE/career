@@ -1,79 +1,76 @@
-﻿-- 1、查询"01"课程比"02"课程成绩高的学生的信息及课程分数  
- 
-select a.* ,b.s_score as 01_score,c.s_score as 02_score from 
-    student a 
-    join score b on a.s_id=b.s_id and b.c_id='01'
-    left join score c on a.s_id=c.s_id and c.c_id='02' or c.c_id = NULL where b.s_score>c.s_score
- 
- 
--- 2、查询"01"课程比"02"课程成绩低的学生的信息及课程分数
- 
-select a.* ,b.s_score as 01_score,c.s_score as 02_score from 
-    student a left join score b on a.s_id=b.s_id and b.c_id='01' or b.c_id=NULL 
-     join score c on a.s_id=c.s_id and c.c_id='02' where b.s_score<c.s_score
-	 
-SELECT s.*, a1.s_score as 01_score, a2.s_score as 02_score
-from student as s
- left join Score as a1 on a1.s_id = s.s_id AND a1.c_id = "01"
- left JOIN Score as a2 on a2.s_id = s.s_id and a2.c_id = "02" 
- WHERE IFNULL(a1.s_score,0) < a2.s_score
- 
- 
--- 3、查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩
-select b.s_id,b.s_name,ROUND(AVG(a.s_score),2) as avg_score from 
-    student b 
-    join score a on b.s_id = a.s_id
-    GROUP BY b.s_id,b.s_name HAVING ROUND(AVG(a.s_score),2)>=60;
- 
- 
--- 4、查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩(包括有成绩的和无成绩的)
- 
-select b.s_id,b.s_name,ROUND(AVG(a.s_score),2) as avg_score from 
-    student b 
-    left join score a on b.s_id = a.s_id
-    GROUP BY b.s_id,b.s_name HAVING ROUND(AVG(a.s_score),2)<60
-    union
-select a.s_id,a.s_name,0 as avg_score from 
-    student a 
-    where a.s_id not in (
-                select distinct s_id from score);
- 
- 
--- 5、查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩
-select a.s_id,a.s_name,count(b.c_id) as sum_course,sum(b.s_score) as sum_score from 
-    student a 
-    left join score b on a.s_id=b.s_id
-    GROUP BY a.s_id,a.s_name;
- 
- 
--- 6、查询"李"姓老师的数量 
+﻿# 1、查询语文比数学成绩高的学生的信息及课程分数
+select st.s_name "学生姓名", ifnull(s.s_score,0) "语文成绩", ifnull(s2.s_score,0) "数学成绩"
+from student st left join score s on st.s_id = s.s_id and s.c_id = 01 # 语文成绩
+left join score s2 on st.s_id = s2.s_id and s2.c_id = 02 # 数学成绩
+where ifnull(s.s_score,0) > ifnull(s2.s_score,0);
+
+# 2、查询语文比数学成绩低的学生的信息及课程分数
+select st.s_name "学生姓名", ifnull(s.s_score,0) "语文成绩", ifnull(s2.s_score,0) "数学成绩"
+from student st left join score s on st.s_id = s.s_id and s.c_id = 01 # 语文成绩
+left join score s2 on st.s_id = s2.s_id and s2.c_id = 02 # 数学成绩
+where ifnull(s.s_score,0) < ifnull(s2.s_score,0);
+
+# 3、查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩
+select st.s_id "学生编号", st.s_name "学生姓名", count(*) "科目数", round(avg(s.s_score),2) "平均成绩"
+from student st
+left outer join score s on st.s_id = s.s_id
+GROUP BY st.s_id, st.s_name
+HAVING round(avg(s.s_score),2) >= 60;
+
+# 4、查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩(包括有成绩的和无成绩的)
+# 有成绩的
+select st.s_id "学生编号", st.s_name "学生姓名", count(*) "科目数", round(avg(s.s_score),2) "平均成绩"
+from student st
+left outer join score s on st.s_id = s.s_id
+GROUP BY st.s_id, st.s_name
+HAVING round(avg(s.s_score),2) < 60 
+# 无成绩
+union
+select st.s_id "学生编号", st.s_name "学生姓名",0 "科目数", 0 "平均成绩"
+from student st
+where st.s_id not in (select DISTINCT s_id from score);
+
+# 5、查询所有学生编号、学生姓名、选课总数、所有课程的总成绩
+select st.s_id "学生编号", st.s_name "学生姓名", count(s.c_id) "科目数", sum(s.s_score) "总成绩"
+from student st
+left outer join score s on st.s_id = s.s_id
+GROUP BY st.s_id, st.s_name;
+
+# 6、查询"李"姓老师的数量 
 select count(t_id) from teacher where t_name like '李%';
- 
--- 7、查询学过"张三"老师授课的同学的信息 
-select a.* from 
-    student a 
-    join score b on a.s_id=b.s_id where b.c_id in(
-        select c_id from course where t_id =(
-            select t_id from teacher where t_name = '张三'));
- 
--- 8、查询没学过"张三"老师授课的同学的信息 
-select * from 
-    student c 
-    where c.s_id not in(
-        select a.s_id from student a join score b on a.s_id=b.s_id where b.c_id in(
-            select c_id from course where t_id =(
-                select t_id from teacher where t_name = '张三')));
--- 9、查询学过编号为"01"并且也学过编号为"02"的课程的同学的信息
- 
-select a.* from 
-    student a,score b,score c 
-    where a.s_id = b.s_id  and a.s_id = c.s_id and b.c_id='01' and c.c_id='02';
- 
--- 10、查询学过编号为"01"但是没有学过编号为"02"的课程的同学的信息
- 
-select a.* from 
-    student a 
-    where a.s_id in (select s_id from score where c_id='01' ) and a.s_id not in(select s_id from score where c_id='02')
+
+# 7、查询学过"张三"老师授课的同学的信息
+select st.*
+from student st
+inner join score s on st.s_id = s.s_id
+where s.c_id in(select c_id from course where t_id = 
+(select t_id from teacher where t_name = '张三'));
+
+# 8、查询没学过"张三"老师授课的同学的信息 
+select *
+from student 
+where s_id not in(select st.s_id
+from student st
+inner join score s on st.s_id = s.s_id
+where s.c_id in(select c_id from course where t_id = 
+(select t_id from teacher where t_name = '张三')));
+
+# 9、查询学过语文并且也学过数学的课程的同学的信息
+select st.*
+from student st, score s, score ss
+where st.s_id = s.s_id
+and st.s_id = ss.s_id
+and s.c_id = 01
+and ss.c_id = 02;
+
+# 10、查询学过语文但是没有学过数学的课程的同学的信息
+select st.*
+from student st
+where st.s_id in(select s_id from score where c_id = 01)
+and st.s_id not in(select s_id from score where c_id = 02);
+
+--todo
+
 -- 11、查询没有学全所有课程的同学的信息 
 select s.* from 
     student s where s.s_id in(

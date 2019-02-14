@@ -5,8 +5,4 @@
 2 python操作数据库
   2.1 python操作sqlite
   2.2 python操作MySQL
-3 ORM操作数据库
-  3.1 ORM简介
-  3.2 SQLAlchemy库的使用
-4 SQL练习50题
   
