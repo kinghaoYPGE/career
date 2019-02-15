@@ -1,0 +1,8 @@
+1 Mysql开发技巧
+  1.1 Join从句(内连接, 左外连接, 右外连接, 全连接, 交叉连接(笛卡儿积))
+  1.2 行列转换
+  1.3 数据去重复(distinct,union)
+2 python操作数据库
+  2.1 python操作sqlite
+  2.2 python操作MySQL
+  
