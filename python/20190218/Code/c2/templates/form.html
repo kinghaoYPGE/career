@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Please Sign In</title>
+</head>
+<body>
+  <!--jinja2语法-->
+  <!-- 判断 -->
+  {% if message %}
+  <p style="color:red">{{ message }}</p>
+  {% endif %}
+  <!-- 循环 -->
+  <!-- {% for i in page %}
+    <a href="/page/{{ i }}"> {{ i }}</a>
+  {% endfor} -->
+  <form action="/signin" method="post">
+    <legend>Please sign in:</legend>
+    <!-- 用户名回显 -->
+    <p><input name="username" placeholder="Username" value="{{ username }}"></p>
+    <p><input name="password" placeholder="Password" type="password"></p>
+    <p><button type="submit">Sign In</button></p>
+  </form>
+</body>
+</html>
