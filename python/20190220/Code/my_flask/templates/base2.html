@@ -1,0 +1,25 @@
+<html>
+  <head>
+    {% block head %}
+    <title>{% block title %}{% endblock %}-My App</title>
+    {% endblock %}
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul>
+        {% for category, msg in messages %}
+          <li>{{ category }}: {{ msg }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    {% endwith %}
+    {% with error_messages = get_flashed_messages(category_filter=['error', 'warning']) %}
+      {% for error in error_messages %}
+        {{ error }}
+      {% endfor %}
+    {% endwith %}
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>

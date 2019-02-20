@@ -1,0 +1,26 @@
+<!-- 继承模板 -->
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+{% block body %}
+<!-- Jinja2模板变量 -->
+<h2>Hello {{name}}</h2>
+<!-- 控制结构 -->
+<!-- if判断 -->
+{% if name == 'python' %}
+  <h2> hello python </h2>
+{% elif name == 'django' %}
+  <h2> hello django </h2>
+{% else %}
+  <h2> others </h2>
+{% endif %}
+<!-- 遍历 -->
+{% for k, v in name.items() %}
+  <h2>{{ k }}: {{ v }}
+{% endfor %}
+<!-- 宏 -->
+{% import 'macros.html' as macros %}
+{{ macros.render_name(name) }}
+{% endblock %}
+
+
