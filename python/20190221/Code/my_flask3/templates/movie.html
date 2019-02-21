@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% for movie in movies %}
+<ul>
+  <li>{{ movie }}</li>
+</ul>
+{% endfor %}
+<form method=post action={{ url_for('movie.add_movie') }}>
+  <p><input type=text name='title'></p>
+  <p><input type=submit value='add'><p>
+</form>
+{% endblock %}

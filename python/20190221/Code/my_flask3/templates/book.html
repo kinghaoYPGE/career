@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% for book in books %}
+<ul>
+  <li>{{ book }}</li>
+</ul>
+{% endfor %}
+<form method=post action={{ url_for('book.add_book') }}>
+  <p><input type=text name='title'></p>
+  <p><input type=submit value='add'><p>
+</form>
+{% endblock %}
