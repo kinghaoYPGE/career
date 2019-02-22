@@ -1,0 +1,16 @@
+1 模板补充
+  1.1 Jinja2模板默认全局变量
+    1.1.1 config，request，session，g，url_for，get_flash_messages
+  1.2 过滤器: 如:{{ user|tojson|safe }}
+    1.2.1 注册过滤器 : 如:@app.template_filter('reverse')或app.jinja_env.filters['reverse']
+2 Flask 模块化应用
+  2.1 蓝图
+  2.2 工厂方法
+  2.3 RESTful 服务 
+3 Flask实现'猜你喜欢'功能(推荐系统)
+4 Flask常用扩展
+  4.1 Flask-RESTful
+  4.2 Flask-SQLAlchemy
+  4.3 Flask-Bootstrap
+  4.4 Flask-Login
+  4.5 Flask-Admin
