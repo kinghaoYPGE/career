@@ -1,0 +1,41 @@
+1 Flask实现'猜你喜欢'功能(推荐系统)
+2 Flask常用扩展
+  2.1 Flask-SQLAlchemy
+  2.2 Flask-cache
+  2.3 Flask-HTTPAuth
+  2.4 Flask-Bootstrap
+  2.5 Flask-RESTful
+  2.6 Flask-MongoEngine
+    2.6.1 MongoDB入门
+    2.6.2 Python操作Mongo
+    2.6.3 Flask集成Mongo
+  2.7 Flask-Login
+    2.7.1 自定义权限控制装饰器
+    2.7.2 授权登陆Oauth
+  2.8 Flask-Script
+  2.9 Flask-Admin
+  2.10 其他扩展 如: Flask-Mail等
+3 TODO(任务清单)应用
+  3.1 项目结构规范
+  3.2 配置管理
+  3.3 Flask-AppBuilder介绍
+  3.4 模型设计
+  3.5 业务实现
+  3.6 测试方式
+  3.7 部署方式
+4 Flask进阶应用
+  4.1 可插拔视图
+  4.2 应用环境和请求环境
+  4.3 Shell使用Flask
+  4.4 Flask方案与大型应用
+5 Flask实战进阶
+  5.1 在线问答系统(类似知乎)
+  5.2 个人博客系统
+6 分布式系统
+    6.1 Redis入门
+      6.1.1 Python操作Redis
+      6.1.2 Redis使用场景(缓存，简单消息队列，session共享)
+    6.2 分布式爬虫
+      6.2.1 爬虫框架scrapy
+    6.3 分布式网站
+      6.3.1 单点登陆
