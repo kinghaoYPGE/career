@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="header">
+  <h2 class="title">Register</h2>
+  <div class="row">
+    <div class="three columns value-prop"></div>
+    <div class="six columns">
+      {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+        {% for error in field_errors %}
+          <div class="has-error" style="color:red"><strong>{{ error }}</strong></div>
+        {% endfor %}
+      {% endfor %}
+      <form method=post>
+        {{ form.hidden_tag() }}
+        <dl>
+          <dd>{{ form.username(class_="u-full-width", placeholder="Username", maxlength=64) }}
+          <dd>{{ form.email(class_="u-full-width", placeholder="Email", maxlength=64) }}
+          <dd>{{ form.password(class_="u-full-width", placeholder="Password") }}
+          <dd>{{ form.password_confirmation(class_="u-full-width", placeholder="Confirm your Password") }}
+          <dt>{{ form.submit }}
+        </dl>
+      </form>
+      <p>Already registerd? <a href="{{ url_for('auth.login') }}">Click here to login</a>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
