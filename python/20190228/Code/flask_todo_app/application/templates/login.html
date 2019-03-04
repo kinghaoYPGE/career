@@ -12,6 +12,13 @@
       <form method=post>
         {{ form.hidden_tag() }}
         <dl>
+          {% for category, msg in get_flashed_messages(with_categories=true) %}
+          {% if category=='error' %}
+            <strong><dd style="color: #8b1505">{{ msg }}</dd> </strong>
+          {% else %}}
+            <dd>{{ msg }}</dd> 
+          {% endif %}
+          {% endfor %}
           <dd>{{ form.email_or_username(class_="u-full-width", placeholder="Email or Username", maxlength=128)}}
           <dd>{{ form.password(class_="u-full-width", placeholder="Password") }}
           <dt>{{ form.submit }}

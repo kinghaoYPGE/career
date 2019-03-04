@@ -1,5 +1,7 @@
-from .user import user_bp
+from .auth import auth_bp
+from .todo import todo_bp
 
 all_bp = [
-  user_bp
+  auth_bp,
+  todo_bp
 ]
