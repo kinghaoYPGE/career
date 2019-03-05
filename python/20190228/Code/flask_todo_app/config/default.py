@@ -1,7 +1,7 @@
 class Config(object):
   BEBUG = False
   
-  SECERT_KEY = 'default'
+  SECRET_KEY = 'default'
   
   MONGODB_SETTINGS = {
   'db': 'todo_db',
