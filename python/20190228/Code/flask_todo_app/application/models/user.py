@@ -8,6 +8,7 @@ class User(db.Document):
     username = db.StringField(required=True)
     email = db.StringField(required=True)
     password_hash = db.StringField()
+    todolists = db.ListField()
 
     @property
     def password(self):
