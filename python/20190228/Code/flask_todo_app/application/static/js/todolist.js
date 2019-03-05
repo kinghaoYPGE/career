@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $(':checkbox').on('click', changeTodoStatus);
+  $('#todolist_title').on('dblclick', changeTodolistTitle);
 });
 
 function changeTodoStatus() {
@@ -8,6 +9,16 @@ function changeTodoStatus() {
   } else {
     putNewStatus($(this).data('todo-id'), false);
   }
+}
+
+function changeTodolistTitle() {
+  var d = $(this);
+  d.html("<input type='text' value='"+$(d).text()+"'/>").mouseleave(function(){
+    var d = $(this);
+    d.html($(d).children(0).val());
+  }).keydown(function(){
+    // code here
+  });
 }
 
 function csrfSafeMethod(method) {
