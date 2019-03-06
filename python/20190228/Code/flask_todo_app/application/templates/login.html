@@ -15,7 +15,7 @@
           {% for category, msg in get_flashed_messages(with_categories=true) %}
           {% if category=='error' %}
             <strong><dd style="color: #8b1505">{{ msg }}</dd> </strong>
-          {% else %}}
+          {% else %}
             <dd>{{ msg }}</dd> 
           {% endif %}
           {% endfor %}

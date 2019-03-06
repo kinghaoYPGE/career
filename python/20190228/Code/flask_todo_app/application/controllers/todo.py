@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from application.forms import *
 import application.models as Models
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 todo_bp = Blueprint('todo', __name__, url_prefix='/todo')
 
@@ -15,6 +15,7 @@ def index():
 
 
 @todo_bp.route(('/todolist/new'), methods=['POST'])
+@login_required
 def new_todolist():
     form = TodoForm(todo=request.form.get('todo'))
     if form.validate():
