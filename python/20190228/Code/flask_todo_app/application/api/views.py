@@ -24,6 +24,18 @@ def update_todo_status(todo_id):
     return jsonify(todo.to_dict())
 
 
+@api_bp.route('/todolist/<todolist_id>', methods=['PUT'])
+def change_todolist_title(todolist_id):
+    todolist = Models.TodoList.objects(id=todolist_id).first_or_404()
+    try:
+        todolist.update(
+            title=request.json.get('title')
+        )
+    except:
+        abort(400)
+
+    return jsonify(todolist.to_dict())
+
 #===========ajax============
 
 

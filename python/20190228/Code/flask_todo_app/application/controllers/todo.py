@@ -26,7 +26,8 @@ def new_todolist():
         current_user.update(push__todolists=todolist)
         todo = Models.Todo(
             desc=form.todo.data,
-            todolist=todolist.id
+            todolist=todolist.id,
+            creator=current_user.id
         ).save()
         # 将todo关联到todolist下
         todolist.update(push__todos=todo)
