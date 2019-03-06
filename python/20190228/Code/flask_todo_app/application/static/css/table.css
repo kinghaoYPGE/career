@@ -21,7 +21,7 @@ table.tablesorter tbody tr td:first-child {
 
 table.tablesorter thead tr th,
 table.tablesorter tfoot tr th {
-  border: 1px solid #FFF;
+  border: 1px solid #CDCDCD;
 }
 
 table.tablesorter th:last-child {

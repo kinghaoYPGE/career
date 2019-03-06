@@ -1,8 +1,9 @@
 from .auth import *
+from .todo import *
 
 def all():
     result = []
-    forms = [auth]
+    forms = [auth, todo]
 
     for f in forms:
         result += f.__all__

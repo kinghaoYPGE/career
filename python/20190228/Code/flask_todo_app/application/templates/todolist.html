@@ -6,7 +6,7 @@
 
 {% block body %}
 <section class="header">
-  <h2 class="title">{{todolist.title|title}}</h2>
+  <h2 class="title" id="todolist_title" data-todolist-id="{{ todolist.id }}">{{todolist.title}}</h2>
   <div class="row">
     <div class="three columns value-prop"></div>
     <div class="six columns">
@@ -23,21 +23,21 @@
     </div>
     <div class="row">
       <div class="one-half column open-todos">
-        <h6 class="docs-header">{{ todolist.open_count }} open</h6>
+        <h6 class="docs-header"><strong style="color: red">{{ todolist.open_count }}</strong> open</h6>
         <ul>
           {% for todo in todolist.todos %}
             {% if not todo.is_finished %}
-              <li><input type="checkbox" id="checkbox" data-todo-id="{{ todo.id }}"> {{ todo.description }}</li>
+          <li><input type="checkbox" id="checkbox" data-todo-id="{{ todo.id }}"><strong style="color: blue">{{ todo.desc }}</strong></li>
             {% endif %}
           {% endfor %}
         </ul>
       </div>
       <div class="one-half column finished-todos">
-        <h6 class="docs-header">{{ todolist.finished_count }} finished</h6>
+        <h6 class="docs-header"><strong style="color: green">{{ todolist.finished_count }}</strong> finished</h6>
         <ul>
           {% for todo in todolist.todos %}
             {% if todo.is_finished %}
-              <li><input type="checkbox" id="checkbox" data-todo-id="{{ todo.id }}" checked="checked"> {{ todo.description }}</li>
+          <li><input type="checkbox" id="checkbox" data-todo-id="{{ todo.id }}" checked="checked"> <strong style="color: green">{{ todo.desc }}</strong></li>
             {% endif %}
           {% endfor %}
         </ul>

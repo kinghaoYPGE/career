@@ -1,8 +1,10 @@
 from .user import *
+from .todo import *
+
 
 def all():
     result = []
-    models = [user]
+    models = [user, todo]
 
     for m in models:
         result += m.__all__

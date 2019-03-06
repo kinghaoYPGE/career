@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $(':checkbox').on('click', changeTodoStatus);
+  $('#todolist_title').on('dblclick', changeTodolistTitle);
 });
 
 function changeTodoStatus() {
@@ -9,6 +10,33 @@ function changeTodoStatus() {
     putNewStatus($(this).data('todo-id'), false);
   }
 }
+
+function changeTodolistTitle() {
+  var d = $(this);
+  d.html("<input type='text' id='input_title' value='"+$(d).text()+"'/>").mouseleave(function(){
+    var d = $(this);
+    d.html($(d).children(0).val());
+  }).keydown(function(e){
+      if(e.keyCode == 13) {
+        var title = $('#input_title').val();
+        var todolist_id = $(this).data('todolist-id');
+        if (todolist_id) {
+            $.ajax({
+            url: '/api/todolist/'+todolist_id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({'title': title}),
+            success: function() {
+              location.reload();
+            }
+          })
+        } else {
+          alert('Wrong operation!')
+        }
+      }
+  });
+}
+
 
 function csrfSafeMethod(method) {
   // these HTTP methods do not require CSRF protection
@@ -46,7 +74,7 @@ function putNewStatus(todoID, isFinished) {
     }
   });
   // send put request using the todo of the get for the same id
-  var todoURL = '/api/todo/' + todoID + '/'
+  var todoURL = '/api/todo/' + todoID;
   $.getJSON(todoURL, function(todo) {
     todo.is_finished = isFinished;
     $.ajax({
