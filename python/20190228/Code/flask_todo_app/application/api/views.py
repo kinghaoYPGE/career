@@ -2,7 +2,7 @@ from flask import jsonify, request, abort
 import application.models as Models
 from . import api_bp
 import application.models as Models
-
+from application.decorators import permission_control
 
 #===========ajax============
 @api_bp.route('/todo/<todo_id>')
@@ -25,6 +25,7 @@ def update_todo_status(todo_id):
 
 
 @api_bp.route('/todolist/<todolist_id>', methods=['PUT'])
+@permission_control(Models.Permission.DELETE)
 def change_todolist_title(todolist_id):
     todolist = Models.TodoList.objects(id=todolist_id).first_or_404()
     try:

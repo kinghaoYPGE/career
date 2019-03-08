@@ -1,0 +1,8 @@
+1 Flask项目练习
+  参考20190228
+2 项目部署
+  2.1 nginx + gunicorn + flask + [supervisor]
+3 Flask项目练习2(问答系统)
+4 Flask实战进阶
+  4.1 个人博客系统
+  4.2 图片社交网站

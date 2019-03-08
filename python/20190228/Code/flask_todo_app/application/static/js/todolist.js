@@ -21,6 +21,7 @@ function changeTodolistTitle() {
         var title = $('#input_title').val();
         var todolist_id = $(this).data('todolist-id');
         if (todolist_id) {
+          // 发出异步请求
             $.ajax({
             url: '/api/todolist/'+todolist_id,
             type: 'PUT',

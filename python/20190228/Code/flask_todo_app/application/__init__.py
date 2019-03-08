@@ -1,8 +1,9 @@
 from config import load_config
 from flask import Flask
 from application.controllers import all_bp
-from application.extensions import db, login_manager
-from application.models import User
+from application.extensions import db, login_manager, admin
+from flask_admin.contrib.mongoengine import ModelView
+from application.models import User, Role
 
 def create_app(mode):
   """工厂方法用于生成flask app"""
@@ -24,6 +25,9 @@ def register_extensions(app):
   @login_manager.user_loader
   def load_user(user_id):
     return User.objects(id=user_id).first()
+
+  admin.init_app(app)
+  admin.add_view(ModelView(Role))
 
 def register_blueprint(app):
   for bp in all_bp:
