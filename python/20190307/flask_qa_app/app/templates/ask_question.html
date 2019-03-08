@@ -42,8 +42,8 @@
         {% if current_user.is_authenticated %}
         <aside class="col-md-3 sidebar">
             <div class="widget">
-                    <h3 class="widget_title">用户名：{{ current_user.name }}</h3>
-                    <a href="{{url_for("user.logout_users")}}">
+                    <h3 class="widget_title">用户名：{{ current_user.username }}</h3>
+                    <a href="{{url_for("auth.logout")}}">
                         <input type="button" value="退出登录" class="button color small">
                     </a>
             </div>

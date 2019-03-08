@@ -149,7 +149,6 @@ class Question(db.Model, BaseModel):
         super(Question, self).__init__(**kwargs)
 
 
-
 class Answer(db.Model, BaseModel):
     __tablename__ = 't_answer'
 

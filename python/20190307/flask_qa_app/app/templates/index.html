@@ -1,5 +1,21 @@
 {% extends "base.html"%}
 {% block content %}
+{#    {% if current_user.is_authenticated %}#}
+{#    <section class="container main-content">#}
+{#        <div class="row">#}
+{#            <div class="col-md-9">#}
+{#            </div>#}
+{#            <aside class="col-md-3 sidebar">#}
+{#                <div class="widget">#}
+{#                        <h3 class="widget_title">用户名：{{ current_user.username }}</h3>#}
+{#                        <a href="{{url_for("auth.logout")}}">#}
+{#                            <input type="button" value="退出登录" class="button color small">#}
+{#                        </a>#}
+{#                </div>#}
+{#            </aside>#}
+{#        </div>#}
+{#    </section>#}
+{#    {% endif %}#}
     <div class="section-warp ask-me">
         <div class="container clearfix">
             <div class="box_icon box_warp box_no_border box_no_background" box_border="transparent" box_background="transparent" box_color="#FFF">
@@ -17,9 +33,14 @@
                         <dl>
                             {% for category, msg in get_flashed_messages(with_categories=true) %}
                             {% if category=='error' %}
-                                <strong><dd style="color: #8b1505">{{ msg }}</dd> </strong>
+{#                               <strong><dd style="color: red">{{ msg }}</dd> </strong>#}
+                                <script>
+                                alert('错误: {{ msg }}')
+                                </script>
                             {% else %}
-                                <dd>{{ msg }}</dd>
+                                <script>
+                                alert('提示: {{ msg }}')
+                                </script>
                             {% endif %}
                             {% endfor %}
                         </dl>
@@ -37,24 +58,9 @@
     </div><!-- End section-warp -->
 </div>
 
-{% if current_user.is_authenticated %}
-<section class="container main-content">
-    <div class="row">
-        <div class="col-md-9">
-        </div>
-        <aside class="col-md-3 sidebar">
-            <div class="widget">
-                    <h3 class="widget_title">用户名：{{ current_user.name }}</h3>
-                    <a href="{{url_for("user.logout_users")}}">
-                        <input type="button" value="退出登录" class="button color small">
-                    </a>
-            </div>
-        </aside>
-    </div>
-</section>
-{% endif %}
 {% endblock %}
 
 {% block footer %}
 <script src="static/js/index.js"></script>
+<script src="static/js/check.js"></script>
 {% endblock %}
