@@ -97,8 +97,8 @@
                             <li class="current_page_item"><a href="index.html"></a></li>
                         </ul> -->
                     </li>
-                    <li id="nav-ask"><a href="#">提问</a></li>
-                    <li id="nav-question"><a href="#">问题</a></li>
+                    <li id="nav-ask"><a href="{{ url_for('qa.add_question') }}">提问</a></li>
+                    <li id="nav-question"><a href="{{ url_for('qa.question_info') }}">问题</a></li>
                 </ul>
             </nav>
         </section><!-- End container -->

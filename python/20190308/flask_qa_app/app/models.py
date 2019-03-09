@@ -135,7 +135,7 @@ class Question(db.Model, BaseModel):
     # 级联删除
     author_id = db.Column(db.Integer, db.ForeignKey('t_user.id', ondelete='CASCADE'))
     author = db.relationship('User', backref=db.backref(
-        't_question', lazy='dynamic'), uselist=False)
+        'questions', lazy='dynamic'), uselist=False)
 
     def __init__(self, **kwargs):
         super(Question, self).__init__(**kwargs)
@@ -157,10 +157,10 @@ class Answer(db.Model, BaseModel):
     create_time = db.Column(db.DateTime, default=datetime.utcnow())
     author_id = db.Column(db.Integer, db.ForeignKey('t_user.id', ondelete='CASCADE'))
     author = db.relationship('User', backref=db.backref(
-        't_answer', lazy='dynamic'), uselist=False)
+        'answers', lazy='dynamic'), uselist=False)
     question_id = db.Column(db.Integer, db.ForeignKey('t_question.id'))
     question = db.relationship('Question', backref=db.backref(
-        't_answer', lazy='dynamic'), uselist=False)
+        'answers', lazy='dynamic'), uselist=False)
 
     def __init__(self, **kwargs):
         super(Answer, self).__init__(**kwargs)
@@ -181,10 +181,10 @@ class Comment(db.Model, BaseModel):
     create_time = db.Column(db.DateTime, default=datetime.utcnow())
     author_id = db.Column(db.Integer, db.ForeignKey('t_user.id', ondelete='CASCADE'))
     author = db.relationship('User', backref=db.backref(
-        't_comment', lazy='dynamic'), uselist=False)
+        'comments', lazy='dynamic'), uselist=False)
     answer_id = db.Column(db.Integer, db.ForeignKey('t_answer.id'))
     answer = db.relationship('Answer', backref=db.backref(
-        't_comment', lazy='dynamic'), uselist=False)
+        'comments', lazy='dynamic'), uselist=False)
 
     def __init__(self, **kwargs):
         super(Comment, self).__init__(**kwargs)
