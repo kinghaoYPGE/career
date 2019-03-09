@@ -27,23 +27,19 @@ def question_info():
         if request.method == "POST":
             if not current_user.is_authenticated:
                 return jsonify(status="error", info=u"请先登录")
-            question_instance = Question.query.filter(name=_form.get('name')).first()
-            if question_instance:
-                return jsonify(status="error", info=u"已存在该问题")
-            else:
-                Question(
-                    name=_form.get('name'),
-                    content=_form.get('content'),
-                    author_id=current_user.id
-                ).save()
-                return jsonify(status="success", info=u"创建成功")
+            Question(
+                name=_form.get('title'),
+                content=_form.get('content'),
+                author_id=current_user.id
+            ).save()
+            return jsonify(status="success", info=u"发布成功")
         else:
             question_list = Question.query.filter().all()
             return render_template("questions.html", qss=question_list)
     except Exception as e:
-        current_app.logger.error(e)
+        print(e)
         if request.method == "POST":
-            return jsonify(status="error", info=u"错误")
+            return jsonify(status="error", info=u"参数错误"), 400
         else:
             return redirect(url_for('qa.index'))
 
@@ -52,12 +48,13 @@ def question_info():
 def questions(question_id):
     try:
         if request.method == "GET":
-            question_instance = Question.query.filter(id=question_id).first()
+            question_instance = Question.query.filter(Question.id==question_id).first()
+            print(dir(question_instance))
             if question_instance:
                 return render_template("question_detail.html", qs=question_instance)
             return redirect(url_for('qa.index'))
     except Exception as e:
-        current_app.logger.error(e)
+        print(e)
         return redirect(url_for('qa.index'))
 
 
@@ -67,11 +64,12 @@ def add_answer(question_id):
         _form = request.form
         if not current_user.is_authenticated:
             return jsonify(status="error", info=u"请先登录")
-        question_instance = Question.query.filter(id=question_id).first()
+        question_instance = Question.query.filter(Question.id==question_id).first()
         if not question_instance:
             return jsonify(status="error", info=u"不存在该问题")
         else:
             if _form['rtype'] == "1":
+                """回答"""
                 Answer(
                     content=_form.get('content'),
                     author_id=current_user.id,
@@ -79,8 +77,10 @@ def add_answer(question_id):
                 ).save()
                 question_instance.answers_count += 1
                 question_instance.save()
+                return jsonify(status="success", info=u"回复成功")
             elif _form['rtype'] == "2":
-                answer_instance = Answer.query.filter(id=_form['rid']).first()
+                """评论"""
+                answer_instance = Answer.query.filter(Answer.id==_form['rid']).first()
                 if not answer_instance:
                     return jsonify(status="error", info=u"错误")
                 Comment(
@@ -90,9 +90,9 @@ def add_answer(question_id):
                 ).save()
                 answer_instance.comments_count += 1
                 answer_instance.save()
+                return jsonify(status="success", info=u"评论成功")
             else:
                 return jsonify(status="error", info=u"错误")
-            return jsonify(status="success", info=u"回复成功")
     except Exception as e:
         current_app.logger.error(e)
         return jsonify(status="error", info=u"错误")
