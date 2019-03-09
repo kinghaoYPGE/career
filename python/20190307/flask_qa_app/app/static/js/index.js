@@ -9,7 +9,9 @@ $(document).ready(function() {
             if(data.status=="success"){
                 $(".panel-pop h2 i").trigger("click");
             }
-            alert(data.info);
+            if(data){
+                alert(data.info);
+            }
         });
     });
 });

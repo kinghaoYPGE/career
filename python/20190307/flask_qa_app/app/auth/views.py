@@ -20,21 +20,22 @@ def register():
         ).save()
         return jsonify(status="success", info=u"创建成功")
     except ValueError as e:
-        flash(message=str(e), category='error')
+        # flash(message=str(e), category='error')
+        return jsonify(status="error", info=str(e))
     except Exception as e:
-        current_app.logger.error(e)
-        flash(message='用户已存在', category='error')
-    return redirect(url_for('qa.index'))
+        # current_app.logger.error(e)
+        # flash(message='用户已存在', category='error')
+        raise
 
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
     _form = request.form
     try:
-        user_instance = User.query.filter(or_(User.name==_form.get('name'),
+        user_instance = User.query.filter(or_(User.username==_form.get('name'),
                                               User.email==_form.get('email'))).first()
         if user_instance and user_instance.verify_password(_form.get('password')):
-            login_user(user_instance.seen())  # 更新用户访问时间
+            login_user(user_instance.seen())  # 登陆并更新用户访问时间
         else:
             flash(message='用户名/邮件或密码错误', category='error')
     except Exception as e:
@@ -44,6 +45,6 @@ def login():
 
 @auth_bp.route('/logout', methods=['GET'])
 @login_required
-def logout_users():
+def logout():
     logout_user()
-    return redirect(url_for('qa_bp.index'))
+    return redirect(url_for('qa.index'))

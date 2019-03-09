@@ -19,12 +19,14 @@ def fetch_question(url):
     :param url:
     :return:
     """
-    r = requests.get(url, headers=headers, timeout=5)
-    html = etree.HTML(r.text)
-    link_list = ['https://segmentfault.com'+i for i in html.xpath("//div[@class='summary']/h2/a/@href")]
-    info_list = html.xpath("//div[@class='summary']/h2/a/text()")
-    return choice(list(zip(link_list, info_list)))
-
+    try:
+        r = requests.get(url, headers=headers, timeout=5)
+        html = etree.HTML(r.text)
+        link_list = ['https://segmentfault.com'+i for i in html.xpath("//div[@class='summary']/h2/a/@href")]
+        info_list = html.xpath("//div[@class='summary']/h2/a/text()")
+        return choice(list(zip(link_list, info_list)))
+    except:
+        return '', ''
 
 if __name__ == '__main__':
     print(fetch_question('https://segmentfault.com/questions/hottest'))

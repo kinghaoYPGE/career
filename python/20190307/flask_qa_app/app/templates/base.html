@@ -89,6 +89,10 @@
             <nav class="navigation">
                 <ul>
                     <li id="nav-index"><a href="{{ url_for('qa.index') }}">首页</a>
+                    {% if current_user.is_authenticated %}
+                        <li id="nav-username"><a href="#">{{ current_user.username }}</a></li>
+                        <li id="nav-logout"><a href="{{ url_for('auth.logout')}}">退出</a></li>
+                    {% endif %}
                         <!-- <ul>
                             <li class="current_page_item"><a href="index.html"></a></li>
                         </ul> -->
@@ -121,6 +125,10 @@
                 <p>
                     <label class="required">密码<span>*</span></label>
                     <input type="password" name="password" value="" id="password">
+                </p>
+                <p>
+                    <label class="required">确认密码<span>*</span></label>
+                    <input type="password" name="confirm_password" value="" id="confirm_password">
                 </p>
             </div>
             <p class="form-submit">
