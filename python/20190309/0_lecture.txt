@@ -1,0 +1,7 @@
+1 Flask项目练习2(问答系统)
+  转到20190308
+2 Flask进阶应用(http://wiki.jikexueyuan.com/project/flask-guide/app-context.html)
+  2.1 可插拔视图
+  2.2 应用环境和请求环境
+  2.3 Shell使用Flask
+  2.4 Flask方案与大型应用

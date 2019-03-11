@@ -33,7 +33,7 @@
                     <!-- </div> -->
                 <div class="author-bio">
                     <h4>作者:</h4>
-                    <p>{{ qs.author.name }}</p>
+                    <p>{{ qs.author.username }}</p>
                 </div><!-- End about-author -->
             </div>
             <div id="commentlist" class="page-content">
@@ -42,7 +42,7 @@
                     {% for ans in qs.answers%}
                          <li class="comment">
                                <div class="comment-body comment-body-answered clearfix">
-                                    <div class="avatar"><img alt="" src="http://placehold.it/60x60/FFF/444"></div>
+                                    <div class="avatar"><img alt="" src="https://oss.love2.io/759e0408-e78c-11e7-872e-00163e0f8adb.png?x-oss-process=style/300x300"></div>
                                     <div class="comment-text">
                                         <div class="author clearfix">
                                             <div class="comment-author"><a href="#">{{ ans.author.name }}</a></div>
@@ -58,9 +58,10 @@
                                </div>
                                <ul class="children">
                                    {% for cm in ans.comments%}
+                                   评论:
                                     <li class="comment">
                                         <div class="comment-body comment-body-answered clearfix">
-                                            <div class="avatar"><img alt="" src="http://placehold.it/60x60/FFF/444"></div>
+                                            <div class="avatar"><img alt="" src="https://oss.love2.io/bbab4c64-db5f-11e7-872e-00163e0f8adb.png?x-oss-process=style/300x300"></div>
                                             <div class="comment-text">
                                                 <div class="author clearfix">
                                                     <div class="comment-author"><a href="#">{{ cm.author.name }}</a></div>
@@ -82,7 +83,7 @@
             </div>
             <div id="respond" class="comment-respond page-content clearfix">
                 <div class="boxedtitle page-title"><h2>提交回复</h2></div>
-                <div id="reply-info" rtype="1" rid="" qs-url="{{url_for('qa.add_answer', question_id=qs.id)}}"></div>
+                <div id="reply-info" rtype="1" rid="" qs-url="{{ url_for('qa.add_reply', question_id=qs.id) }}"></div>
                     <form action="" method="post" id="commentform" class="comment-form">
                         <div id="respond-textarea">
                             <p>
@@ -99,8 +100,8 @@
         {% if current_user.is_authenticated %}
         <aside class="col-md-3 sidebar">
             <div class="widget">
-                    <h3 class="widget_title">用户名：{{ current_user.name }}</h3>
-                    <a href="{{url_for("user.logout_users")}}">
+                    <h3 class="widget_title">用户名：{{ current_user.username }}</h3>
+                    <a href="{{url_for("auth.logout")}}">
                         <input type="button" value="退出登录" class="button color small">
                     </a>
             </div>

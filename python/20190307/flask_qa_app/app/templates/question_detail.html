@@ -33,13 +33,13 @@
                     <!-- </div> -->
                 <div class="author-bio">
                     <h4>作者:</h4>
-                    <p>{{ qs.author.name }}</p>
+                    <p>{{ qs.author.username }}</p>
                 </div><!-- End about-author -->
             </div>
             <div id="commentlist" class="page-content">
                 <div class="boxedtitle page-title"><h2>答案 ( <span class="color">{{qs.answers_count}}</span> )</h2></div>
                 <ol class="commentlist clearfix">
-                    {% for ans in qs.answers%}
+                    {% for ans in qs.t_answer%}
                          <li class="comment">
                                <div class="comment-body comment-body-answered clearfix">
                                     <div class="avatar"><img alt="" src="http://placehold.it/60x60/FFF/444"></div>
@@ -57,7 +57,7 @@
                                     </div>
                                </div>
                                <ul class="children">
-                                   {% for cm in ans.comments%}
+                                   {% for cm in ans.t_comment%}
                                     <li class="comment">
                                         <div class="comment-body comment-body-answered clearfix">
                                             <div class="avatar"><img alt="" src="http://placehold.it/60x60/FFF/444"></div>
@@ -99,8 +99,8 @@
         {% if current_user.is_authenticated %}
         <aside class="col-md-3 sidebar">
             <div class="widget">
-                    <h3 class="widget_title">用户名：{{ current_user.name }}</h3>
-                    <a href="{{url_for("user.logout_users")}}">
+                    <h3 class="widget_title">用户名：{{ current_user.username }}</h3>
+                    <a href="{{url_for("auth.logout")}}">
                         <input type="button" value="退出登录" class="button color small">
                     </a>
             </div>

@@ -11,15 +11,15 @@ $('#confirm_password').blur(function () {
 // 校验用户是否已存在
 $('#name').blur(function () {
     var name = $("#name").val();
-    if (!name){
+    if (!name) {
         return;
     }
     post_url = '/ajax/user/username_check';
-    $.post(post_url, {"username": name}, function(data){
-            if(data){
-                alert(data.info);
-            }
-        });
+    $.post(post_url, {"username": name}, function (data) {
+        if (data) {
+            alert(data.info);
+        }
+    });
 });
 
 // 校验邮箱是否已存在
