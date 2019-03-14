@@ -1,0 +1,5 @@
+CREATE USER 'django_mysql'@'localhost%' IDENTIFIED BY "123";
+
+grant all privileges on community_db.* to django_mysql@localhost identified by '123';
+
+CREATE DATABASE community_db CHARACTER SET 'utf8';
