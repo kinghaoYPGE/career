@@ -40,7 +40,7 @@ def unique_username_validator(value):
 
 class SignUpForm(forms.ModelForm):
     """
-    注册表单
+    注册表单对象
     """
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
