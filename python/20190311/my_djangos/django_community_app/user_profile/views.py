@@ -22,6 +22,7 @@ class ProfileDetailView(TemplateView):
         return context
 
 
+@method_decorator([login_required], name='dispatch')
 class UpdateProfileView(UpdateView):
     model = Profile
     fields = ['avatar', 'url', 'location', 'job_title']
