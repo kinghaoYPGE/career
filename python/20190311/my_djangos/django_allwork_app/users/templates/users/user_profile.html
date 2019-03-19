@@ -14,20 +14,20 @@
             </div>
             {% if profile == user %}
             <div class="col-xs-6 col-sm-6 float-right">
-                    # 下面是一个下拉菜单
+                    {# 下面是一个下拉菜单 #}
                 <div class="dropdown float-right">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Settings
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="#" class="dropdown-item" type="button">Edit</a></li>
+                        <li><a href="{% url 'users:update_profile' user.id %}" class="dropdown-item" type="text">Edit</a></li>
                     </ul>
                 </div>
             </div>
             {% endif %}
         </div>
 
-         # 展示个人信息
+         {# 展示个人信息 #}
         <div class="well profile">
             <div class="row">
                 <div class="col-xs-12 col-sm-12">

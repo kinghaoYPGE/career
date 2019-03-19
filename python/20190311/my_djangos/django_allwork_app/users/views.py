@@ -53,8 +53,42 @@ class FreelancerSignUpView(CreateView):
     form_class = FreelancerSignUpForm
     template_name = 'users/signup_form.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_type'] = 'freelancer'
+        return context
+
     def form_valid(self, form):
+        print(form.__dict__)
         user = form.save()
         login(self.request, user)
         return redirect('home')
+
+
+class OwnerSignUpView(CreateView):
+    model = User
+    form_class = OwnerSignUpForm
+    template_name = 'users/signup_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_type'] = 'project owner'
+        return context
+
+    def form_valid(self, form):
+        print(form.__dict__)
+        user = form.save()
+        login(self.request, user)
+        return redirect('home')
+
+
+class UserJobProfileView(TemplateView):
+    model = User
+    template_name = 'users/user_job_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        username = self.kwargs.get('username')
+        context['user'] = User.objects.get(username=username)
+        return context
 

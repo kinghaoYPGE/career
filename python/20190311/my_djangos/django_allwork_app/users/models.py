@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=100, blank=True, null=True)
 
     # 用户简介
-    profile_photo = models.ImageField(upload_to='pic_folder/%Y/%M/%D', default='pic_folder/default.jpg')
+    profile_photo = models.ImageField(upload_to='pic_folder/%Y%m%d', default='pic_folder/default.jpg')
     profile = models.TextField(null=True, blank=True)
 
     # 用户角色
