@@ -10,7 +10,7 @@
         </ol>
     </nav>
     <h2 class="mb-3">Add a new job</h2>
-
+    <img class="mr-3" style="height: 30px" src="{{ MEDIA_URL }}{{ user.profile_photo }}" alt="Generic placeholder image">
     <form method="post" novalidate enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy }}
