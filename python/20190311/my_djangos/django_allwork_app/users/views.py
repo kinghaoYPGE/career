@@ -59,7 +59,10 @@ class FreelancerSignUpView(CreateView):
         return context
 
     def form_valid(self, form):
-        user = form.save()
+        user = form.save(commit=False)
+        user.save()
+        user.skills.add(form.cleaned_data.get('skills'))
+        form.save_m2m()  # 为了更新skills
         login(self.request, user)
         return redirect('home')
 
