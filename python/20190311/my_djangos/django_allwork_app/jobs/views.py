@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, DetailView, RedirectView
 from .models import Job, JobProposal
@@ -79,8 +80,18 @@ class ProposalAcceptView(RedirectView):
         MessageService().send_message(
             sender=self.request.user,
             recipient=job.freelancer,
-            message="""Hi {username}, your proposal have been accepted.""".format(username=job.freelancer.username)
+            message="""
+            Hi {username}, your proposal have been accepted.
+            Project details: <a href='{url}'>{job}</a>
+            """.format(
+                username=job.freelancer.username,
+                url=reverse('jobs:job_detail', kwargs={'pk': job.pk}),
+                job=job.job_title
+            )
         )
+        messages.success(self.request, 'User: {} is assiged to your project'.format(
+            kwargs.get('username')
+        ))
         return super().get_redirect_url(*args, pk=kwargs.get('pk'))
 
 

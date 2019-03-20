@@ -26,10 +26,10 @@
                                    height: 100%;
                                    width: 100%;
                                    text-decoration: none;"
-                                   href="{% url 'direct_messages:user_message' chat.pk %}" class="fill-div">
+                                   href="{% url 'chats:user_message' chat.pk %}" class="fill-div">
                                     <div class="chat_people" >
                                         <div class="chat_img" >
-                                            <img src="{{ MEDIA_URL }}{{ chat.recipient.profile_photo.url }}" alt="sunil">
+                                            <img src="{{ chat.recipient.profile_photo.url }}" alt="sunil">
                                         </div>
                                         <div class="chat_ib" >
                                             <h5>{{ chat.recipient }}</h5>
@@ -54,7 +54,7 @@
                             {% else %}
                                 <div class="incoming_msg">
                                     <div class="incoming_msg_img">
-                                        <img src="{{ MEDIA_URL }}{{ conversation.sender.profile_photo.url }}" alt="{{ conversation.recipient.username }}">
+                                        <img src="{{ conversation.sender.profile_photo.url }}" alt="{{ conversation.recipient.username }}">
                                     </div>
                                     <div class="received_msg">
                                         <div class="received_withd_msg">

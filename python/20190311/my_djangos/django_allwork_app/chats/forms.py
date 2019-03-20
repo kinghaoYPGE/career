@@ -6,7 +6,9 @@ class MessageForm(forms.ModelForm):
     content = forms.CharField(
         max_length=100,
         required=True,
-        widget=forms.TextInput()
+        widget=forms.TextInput(
+            attrs={'class': 'write_msg', 'name': 'content', 'placeholder': 'Reply...'}
+        )
     )
 
     class Meta:
