@@ -8,14 +8,14 @@
                     <h5 class="card-title">{{ job.job_title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Budget: {{ job.price }}</h6>
                     <h6 class="card-subtitle mb-2 text-muted">Posted: {{ job.date_created }}</h6>
-                    <p class="card-text">{{ job.job_description }}</p>
+                    <div class="card-text">{{ job.job_description }}</div>
                     <div style="position: relative;">
                         {% for tag in job.tags.all %}
                             <span class="badge badge-primary">{{ tag }}</span>
                         {% endfor %}
                     </div>
                     {% if job.document %}
-                        <a type="button" target="_blank" href="{{ MEDIA_URL }}{{ job.document.url }}" >Attachment</a>
+                        <a type="text" target="_blank" href="{{ job.document.url }}" >Attachment</a>
                     {% endif %}
                 </div>
             </div>
@@ -24,7 +24,6 @@
 
         <div class="col-md-4 col-sm-4">
             {% if job.status != 'ended' %}
-
                 {% if user != job.owner %}
                     <h5>About the client</h5>
                     <span class="badge badge-light">{{ job.owner.username }}</span><br/><br/>
@@ -32,21 +31,21 @@
                     {% if user == job.freelancer %}
                         <a type="button" class="btn btn-info disabled">Accepted</a><br/>
                     {% else %}
-{#                        {% if job.status != 'active' or user == job.owner %}#}
-{#                            <a type="button" class="btn btn-success disabled">Apply</a><br/>#}
-{#                        {% else %}#}
+                        {% if job.status != 'active' or user == job.owner %}
+                            <a type="button" class="btn btn-success disabled">Apply</a><br/>
+                        {% else %}
                             {% if user in job.freelancers %}
-                                <a type="button" class="btn btn-info disabled">Applied</a><br/>
+                                <a type="text" class="btn btn-info disabled">Applied</a><br/>
                             {% else %}
                                 <a type="button" href="{% url 'jobs:job_apply' job.pk %}" class="btn ">Apply</a><br/>
                             {% endif %}
-{#                        {% endif %}#}
+                        {% endif %}
                     {% endif %}
 
                 {% else %}
-                    <a type="button" href="{% url 'jobs:job_close' job.pk %}" class="btn btn-warning">Close project</a><br/>
+                    <a type="text" href="{% url 'jobs:job_close' job.pk %}" class="btn btn-warning">Close project</a><br/>
                 {% endif %}
-
+                <br>
                 <span class="badge badge-secondary">{{ job.status }}</span>
             {% else %}
                 <a type="button" class="btn btn-info disabled">Completed</a><br/>
@@ -54,34 +53,7 @@
         </div>
     </div>
 
-{#    #}
-{#    <div class="col-md-4 col-sm-4">#}
-{#        <h5>About the client</h5>#}
-{#            <span class="badge badge-light">{{ job.owner.username }}</span><br/><br/>#}
-{#            {% if job.status == 'active' %}#}
-{#                {% if user != job.owner %}#}
-{#                    {% if user == job.freelancer %}#}
-{#                        <a type="button" class="btn btn-info disabled">Accepted</a><br/>#}
-{#                    {% else %}#}
-{#                            {% if user in job.freelancers %}#}
-{#                                <a type="button" class="btn btn-info disabled">Applied</a><br/>#}
-{#                            {% else %}#}
-{#                                <a type="button" href="{% url 'jobs:job_apply' job.pk %}" class="btn ">Apply</a><br/>#}
-{#                            {% endif %}#}
-{#                    {% endif %}#}
-{#                {% else %}#}
-{#                    <a type="button" href="{% url 'jobs:job_close' job.pk %}" class="btn btn-warning">Close project</a><br/>#}
-{#                {% endif %}#}
-{#                <span class="badge badge-secondary">{{ job.status }}</span>#}
-{#            {% elif job.status == 'working' %}  #}
-{#                #}
-{#            {% else %}#}
-{#                <a type="button" class="btn btn-info disabled">Completed</a><br/>#}
-{#            {% endif %}#}
-{#        </div>#}
-{#    </div>#}
-
-
+    </div>
 
 
     <div class="row">
@@ -90,14 +62,19 @@
 
                 {% if user == job.owner %}
 
-                    {% if job.freelancer %}
-                        <h4>Messages</h4>
-                    {% else %}
+
                         <h4>Proposals</h4>
+                        {% if not job.job_proposal.all %}
+                            <p>There are no proposals now.</p>
+                        {% endif %}
                         {% for proposal in job.job_proposal.all %}
                             <div class="card w-75">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ proposal.freelancer.name }}</h5>
+                                    <h5 class="card-title">Username: {{ proposal.freelancer.username }}</h5>
+                                    <h5 class="card-title">Income: {{ proposal.freelancer.income }}</h5>
+                                    {% for tag in proposal.freelancer.skills.all %}
+                                        <span class="badge badge-primary">{{ tag }}</span>
+                                    {% endfor %}
                                     <p class="card-text">{{ proposal.proposal }}</p>
                                     <div style="position: relative;">
                                         <a href="{% url 'jobs:proposal_accept' pk=job.pk username=proposal.freelancer.username %}" class="btn btn-success">Accept</a>
@@ -105,10 +82,13 @@
                                 </div>
                             </div>
                         {% endfor %}
-                    {% endif %}
+
 
                 {% else %}
                     <h4>My proposals</h4>
+                {% if not current_proposal.proposal %}
+                    <span>There is no proposal to this job now. <a href="{% url 'jobs:job_apply' job.pk %}" >apply</a>?</span>
+                {% endif %}
                     <div class="car w-75">
                         <div class="card-body">
                             <p class="card-text">{{ current_proposal.proposal }}</p>

@@ -3,7 +3,6 @@
 {% block content %}
     <div class="card">
         {% for job in jobs %}
-            {% if job.status == 'active' %}
             <div class="card" style="padding: 10px">
                 <h5 class="card-title">
                     <a href="{% url 'jobs:job_detail' job.pk %}">
@@ -20,7 +19,6 @@
                     {% endfor %}
                 </div>
             </div>
-            {% endif %}
             {% empty %}
             <tr>
                 <td class="bg-light text-center font-italic" colspan="4">No job matching your interests right now.</td>

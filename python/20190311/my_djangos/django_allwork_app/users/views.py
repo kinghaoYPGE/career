@@ -59,7 +59,6 @@ class FreelancerSignUpView(CreateView):
         return context
 
     def form_valid(self, form):
-        print(form.__dict__)
         user = form.save()
         login(self.request, user)
         return redirect('home')

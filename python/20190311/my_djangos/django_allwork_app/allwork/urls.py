@@ -22,4 +22,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('', include('users.urls')),
     path('', include('jobs.urls')),
+    path('', include('chats.urls')),
 ]

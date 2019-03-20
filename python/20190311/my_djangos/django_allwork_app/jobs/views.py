@@ -1,9 +1,12 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, DetailView, RedirectView
 from .models import Job, JobProposal
-
+from chats.models import ChatRoom
+from users.models import User
+from chats.services import MessageService
 
 class JobListView(ListView):
     model = Job
@@ -36,6 +39,7 @@ class JobDetailView(DetailView):
         job_id = self.kwargs.get('pk')
         job = Job.objects.get(pk=job_id)
         if job.owner != self.request.user and self.request.user in job.freelancers:
+            print(job)
             kwargs['current_proposal'] = JobProposal.objects.get(
                 job__pk=job_id,
                 freelancer=self.request.user
@@ -57,7 +61,7 @@ class JobApplyView(CreateView):
 
     def form_valid(self, form):
         proposal = form.save(commit=False)
-        proposal.job = self.kwargs['job']
+        proposal.job = Job.objects.get(pk=self.kwargs['pk'])
         proposal.freelancer = self.request.user
         proposal.save()
         return redirect('users:job_profile', self.request.user.username)
@@ -68,6 +72,24 @@ class ProposalAcceptView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         job = get_object_or_404(Job, pk=kwargs.get('pk'))
+        job.freelancer = User.objects.get(username=kwargs.get('username'))
         job.status = 'working'
         job.save()
-        return super().get_redirect_url(*args, **kwargs)
+        chatroom = ChatRoom.objects.create(sender=self.request.user, recipient=job.freelancer)
+        MessageService().send_message(
+            sender=self.request.user,
+            recipient=job.freelancer,
+            message="""Hi {username}, your proposal have been accepted.""".format(username=job.freelancer.username)
+        )
+        return super().get_redirect_url(*args, pk=kwargs.get('pk'))
+
+
+class JobCloseView(RedirectView):
+    pattern_name = 'jobs:job_detail'
+
+    def get_redirect_url(self, *args, **kwargs):
+        job = get_object_or_404(Job, pk=kwargs.get('pk'))
+        job.status = 'ended'
+        job.save()
+        messages.warning(self.request, 'Job have ended successfully.')
+        return super().get_redirect_url(*args, pk=kwargs.get('pk'))

@@ -45,6 +45,8 @@ class UserChangeForm(forms.ModelForm):
 
 class FreelancerSignUpForm(UserCreationForm):
 
+    skills = forms.CharField(label='Skills', widget=forms.TextInput)
+
     @transaction.atomic
     def save(self, commit=True):
         user = super().save(commit=False)

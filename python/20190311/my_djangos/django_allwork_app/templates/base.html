@@ -33,7 +33,7 @@
                             <a class="nav-link btn btn-sm btn-outline-secondary float-right" href="{% url 'users:job_profile' user.username %}" >My jobs </a>
                         </li>
                         <li>
-                            <a  href="#" class=" nav-link  btn btn-sm btn-outline-secondary float-right" type="button">Messages</a>
+                            <a  href="{% url 'chats:list_message'  %}" class=" nav-link  btn btn-sm btn-outline-secondary float-right" type="button">Messages</a>
                         </li>
                         <li>
                             <a  href="{% url 'jobs:job_list' %}" class=" nav-link  btn btn-sm btn-outline-secondary float-right" type="button">All jobs</a>
