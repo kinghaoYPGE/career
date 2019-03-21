@@ -4,6 +4,7 @@ from taggit.managers import TaggableManager
 
 class Job(models.Model):
     owner = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='job_owner')
+    freelancer = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='job_freelancer', null=True)
 
     job_title = models.CharField(max_length=300)
     job_description = models.TextField()
@@ -33,7 +34,7 @@ class Job(models.Model):
     @property
     def freelancers(self):
         # select freelancer_id from job_proposal where job_id = self.id
-        return self.job_proposal.all()
+        return [proposal.freelancer for proposal in self.job_proposal.all()]
 
 
 class JobProposal(models.Model):
