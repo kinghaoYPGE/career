@@ -1,0 +1,8 @@
+1 异步IO
+  1.1 概念-同步阻塞、同步非阻塞、异步阻塞、异步非阻塞
+  1.2 协程（微线程）
+  1.3 python异步开发库-Gevent, Tornado, Sanic, Twisted, asyncio(标准库)
+  1.4 底层机制epoll, kqueue
+2 编写异步web框架
+3 Tornado和sanic异步Web框架简介
+4 Scrapy异步爬虫框架
