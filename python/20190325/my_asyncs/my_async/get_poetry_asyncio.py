@@ -15,7 +15,7 @@ async def fetch(url):
 
 
 def main():
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_event_loop()  # 得到事件循环
     tasks = [fetch(address) for address in addresses]
     # loop.run_until_complete(asyncio.wait(tasks))
     loop.run_until_complete(asyncio.gather(*tasks))
