@@ -1,25 +1,27 @@
-import tornado.gen
-import requests
-impor tornado.httpclient
 import tornado.ioloop
-from tornado import gen
+import tornado.web
 import time
+from tornado import gen
 
-N = 10
-URL = 'http://localhost:8888/sleep'
 
-@gen.coroutine
-def main():
-    http_client = tornado.httpclient.AsyncHTTPClient()
-    responses = yield [
-        http_client.fetch(URL) for i in range(N)
-    ]
+class MainHandler(tornado.web.RequestHandler):
+    # @gen.coroutine
+    async def get(self):
+        print(time.time())
+        # yield from gen.sleep(3)
+        await gen.sleep(3)
+        self.write("Hello, world")
+        print(time.time())
 
-beg1 = time.time()
-tornado.ioloop.IOLoop.current().run_sync(main)
-print('async', time.time()-beg1)
 
-beg2 = time.time()
-for i in range(N):
-    requests.get(URL)
-print('req', time.time()-beg2)
+def make_app():
+    return tornado.web.Application([
+        (r"/", MainHandler),
+    ], debug=True)
+
+
+if __name__ == "__main__":
+    app = make_app()
+    app.listen(8080)
+    print('server start on 8080...')
+    tornado.ioloop.IOLoop.current().start()

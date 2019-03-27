@@ -698,7 +698,7 @@ class Task(object):
 
 ```python
 def loop():
-    """消息事件循环+回调函数"""
+    """消息事件循环"""
     while not stopped:
         events = selector.select()
         for event_key, event_mask in events:

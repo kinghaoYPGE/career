@@ -1,10 +1,16 @@
 # examples/server_simple.py
 from aiohttp import web
+import time
+import asyncio
+import threading
 
 
 async def handle(request):
+    print(threading.current_thread(), time.time())
+    await asyncio.sleep(3)
     name = request.match_info.get('name', "Anonymous")
     text = "Hello, " + name
+    print(time.time())
     return web.Response(text=text)
 
 
@@ -23,7 +29,8 @@ async def wshandle(request):
     return ws
 
 
-app = web.Application()
+app = web.Application(debug=True)
+# 添加路由
 app.add_routes([web.get('/', handle),
                 web.get('/echo', wshandle),
                 web.get('/{name}', handle)])

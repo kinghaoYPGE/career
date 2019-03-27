@@ -1,25 +1,26 @@
-import tornado.httpserver
-import tornado.ioloop
-import tornado.options
-import tornado.web
+from tornado import httpclient
+import time
+from tornado import ioloop
+import requests
+from tornado import gen
+import asyncio
 
-from tornado.options import define, options
-
-define("port", default=8888, help="run on the given port", type=int)
-
-
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello, world")
+N = 3
+URL = 'http://localhost:8080'
 
 
-def main():
-    tornado.options.parse_command_line()
-    application = tornado.web.Application([(r"/", MainHandler)])
-    http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(options.port)
-    tornado.ioloop.IOLoop.current().start()
+async def main():
+    http_client = httpclient.AsyncHTTPClient()
+    return await asyncio.gather(*[http_client.fetch(URL) for i in range(N)])
 
 
-if __name__ == "__main__":
-    main()
+beg1 = time.time()
+ioloop.IOLoop.current().run_sync(main)
+print('async', time.time()-beg1)
+
+beg2 = time.time()
+for i in range(N):
+    requests.get(URL)
+print('requests', time.time()-beg2)
+
+
