@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for douban_spider project
+# Scrapy settings for my_spider project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,15 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'douban_spider'
+BOT_NAME = 'my_spider'
 
-SPIDER_MODULES = ['douban_spider.spiders']
-NEWSPIDER_MODULE = 'douban_spider.spiders'
+SPIDER_MODULES = ['my_spider.spiders']
+NEWSPIDER_MODULE = 'my_spider.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'douban_spider (+http://www.yourdomain.com)'
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
+# USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -48,15 +47,14 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'douban_spider.middlewares.DoubanSpiderSpiderMiddleware': 543,
+#    'my_spider.middlewares.MySpiderSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-#    'douban_spider.middlewares.DoubanSpiderDownloaderMiddleware': 543,
-#     'douban_spider.middlewares.my_proxy': 543,
-    'douban_spider.middlewares.my_useragent': 543,
+#    'my_spider.middlewares.MySpiderDownloaderMiddleware': 543,
+    'my_spider.middlewares.my_useragent': 543,
 }
 
 # Enable or disable extensions
@@ -68,7 +66,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'douban_spider.pipelines.DoubanSpiderPipeline': 300,
+    'my_spider.pipelines.LouSpiderPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -92,7 +90,8 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
+# mongodb配置
 mongo_host = 'localhost'
 mongo_port = 27017
-mongo_db_name = 'shiyanlou'
-mongo_db_collection = 'douban_movie'
+mongo_db_name = 'my_spider'
+mongo_db_collection = 'my_spider'
