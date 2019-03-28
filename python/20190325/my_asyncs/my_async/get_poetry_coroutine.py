@@ -9,6 +9,7 @@ addresses = list(parse_args())
 
 
 class Future(object):
+    """当异步调用结束就将结果设置到这个未来对象"""
     def __init__(self):
         self.result = None
         self._callbacks = []
@@ -70,7 +71,7 @@ class Task(object):
         self.coro = coro
         f = Future()
         f.set_result(None)
-        self.step(f)
+        self.step(f)  # self.coro.send(None) ->
 
     def step(self, future):
         try:
@@ -81,11 +82,12 @@ class Task(object):
 
 
 def loop():
-    """消息事件循环+回调函数"""
+    """消息事件循环"""
     while not stopped:
         events = selector.select()
         for event_key, event_mask in events:
             callback = event_key.data
+            print(callback)
             callback()
 
 

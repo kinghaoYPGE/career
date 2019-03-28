@@ -593,7 +593,7 @@ Python 生态也以终为始，秉承着“程序猿不必难程序猿”的原�
 
 ### 4.4.1 未来对象(Future)
 
-不用回调的方式了，怎么知道异步调用的结果呢？先设计一个对象，异步调用执行完的时候，就把结果放在它里面。这种对象称之为未来对象。
+不用回调的方式了，怎么知道异步调用的结果呢？先设计一个对象，异步调用执行完的时候，就把结果放在它里面。这种对象称之为未来对象(Future)。
 
 ```python
 class Future(object):
@@ -698,7 +698,7 @@ class Task(object):
 
 ```python
 def loop():
-    """消息事件循环+回调函数"""
+    """消息事件循环"""
     while not stopped:
         events = selector.select()
         for event_key, event_mask in events:
@@ -752,7 +752,7 @@ Python 语言的设计者们也认识到了这个问题，再次秉承着“程�
 
 ### 4.5.1 yield from语法介绍
 
-yield from 是Python 3.3 新引入的语法（PEP 380）。它主要解决的就是在生成器里玩生成器不方便的问题。它有两大主要功能。
+yield from 是Python 3.3 新引入的语法（PEP 380）。**它主要解决的就是在生成器里玩生成器不方便的问题**。它有两大主要功能。
 
 第一个功能是：**让嵌套生成器不必通过循环迭代yield，而是直接yield from**。以下两种在生成器里玩子生成器的方式是等价的。
 
@@ -775,8 +775,8 @@ def gen():
     
 def subgen():
 	while True:
-    x = yield
-    yield x+1
+        x = yield
+        yield x+1
     
 def main():
 	g = gen()
@@ -891,7 +891,7 @@ class Future(object):
 
 ### 4.5.4 asyncio 介绍
 
-**asyncio**是Python 3.4 试验性引入的异步I/O框架（PEP 3156），提供了基于协程做异步I/O编写单线程并发代码的基础设施。其核心组件有事件循环（Event Loop）、协程(Coroutine）、任务(Task)、未来对象(Future)以及其他一些扩充和辅助性质的模块。
+**asyncio**是Python 3.4 试验性引入的异步I/O框架（PEP 3156），提供了基于协程做异步I/O编写单线程并发代码的基础设施。其核心组件有事件循环（**Event Loop**）、协程**(Coroutine**）、任务(Task)、未来对象(Future)以及其他一些扩充和辅助性质的模块。
 
 在引入asyncio的时候，还提供了一个装饰器**@asyncio.coroutine**用于装饰使用了**yield from**的函数，以标记其为协程。但并不强制使用这个装饰器。
 

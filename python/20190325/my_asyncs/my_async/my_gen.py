@@ -1,4 +1,5 @@
 def consumer():
+    """消费者"""
     r = ''
     while True:
         n = yield r
@@ -9,6 +10,7 @@ def consumer():
 
 
 def produce(c):
+    """生产者"""
     c.send(None)
     n = 0
     while n < 5:
