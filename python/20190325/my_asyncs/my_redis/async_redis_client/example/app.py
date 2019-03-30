@@ -19,9 +19,9 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         c = Client()
         # 从 Redis 数据库中获取键值
-        shiyanlou = yield tornado.gen.Task(c.get, "shiyanlou")
+        async_redis = yield tornado.gen.Task(c.get, "async_redis")
         self.set_header("Content-Type", "text/html")
-        self.render("template.html", title="Simple demo", shiyanlou=shiyanlou)
+        self.render("template.html", title="Simple demo", async_redis=async_redis)
 
 
 application = tornado.web.Application([
@@ -29,17 +29,17 @@ application = tornado.web.Application([
 ])
 
 
-# 设置键 shiyanlou 的值
+# 设置键 async_redis 的值
 @tornado.gen.coroutine
 def create_test_data():
     c = Client()
     yield c.select(0)
-    yield c.set("shiyanlou", "是一个IT动手实践网站")
+    yield c.set("async_redis", "redis异步客户端")
 
 
 if __name__ == '__main__':
     create_test_data()
     http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(8080)
+    http_server.listen(8089)
     print("Demo is run at 0.0.0.0:8080")
     tornado.ioloop.IOLoop.instance().start()

@@ -10,7 +10,7 @@
     font: 16px/1.6 menlo, monospace;
 }</style>
 <p><b>hi, {{ session['user'] }}!</b></p>
-<p>Message: <input id="in"/></p>
+<p>Message: <input id="in" style="width: 100%"/></p>
 <pre id="out"></pre>
 <script>
     function sse() {
@@ -18,7 +18,7 @@
         var out = document.getElementById('out');
         source.onmessage = function (e) {
             // XSS in chat is fun
-            out.innerHTML = e.data + '\\n' + out.innerHTML;
+            out.innerHTML = e.data + '\n' + out.innerHTML;
         };
     }
 
