@@ -21,7 +21,7 @@ OAuth（开放授权 Open Authorization）是一个开放标准，允许用户�
 
 ![](https://img-blog.csdn.net/20180125183255263?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemp3X3B5dGhvbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-回调地址就是你接受code的url，要在第三方登录平台上填写，这样才能把code传递给你的网站。
+**回调地址就是你接受code的url，要在第三方登录平台上填写，这样才能把code传递给你的网站。**
 
 举个例子：豆瓣的qq登陆功能
 
@@ -87,9 +87,10 @@ from . import views
 app_name = 'oauth'
 
 urlpatterns = [
-    path('github_login', views.git_login, name='github_login'),
-    path('github_check', views.git_check, name='github_check'),
+    path('oauth/github_login', views.git_login, name='github_login'),
+    path('oauth/github_check', views.git_check, name='github_check'),
 ]
+
 ```
 
 client.py
@@ -97,75 +98,78 @@ client.py
 ```python
 import json
 import urllib
-import re
+from urllib import parse, request
 
 
-class OAuthBase(object):  # 基类，将相同的方法写入到此类中
-    def __init__(self, client_id, client_key, redirect_url):  # 初始化，载入对应的应用id、秘钥和回调地址
+class OAuthBase(object):
+    def __init__(self, client_id, client_key, redirect_url):
         self.client_id = client_id
         self.client_key = client_key
         self.redirect_url = redirect_url
 
-    def _get(self, url, data):  # get方法
-        request_url = '%s?%s' % (url, urllib.parse.urlencode(data))
-        response = urllib.request.urlopen(request_url)
+    def _get(self, url, data):
+        request_url = '%s?%s' % (url, parse.urlencode(data))
+        print('request url: ', request_url)
+        response = request.urlopen(request_url)
         return response.read()
 
-    def _post(self, url, data):  # post方法
-        request = urllib.request.Request(url, data=urllib.parse.urlencode(data).encode(encoding='utf-8'))  # 1
-        response = urllib.request.urlopen(request)
+    def _post(self, url, data):
+        req = request.Request(url, data=parse.urlencode(data).encode('utf-8'))
+        try:
+            response = request.urlopen(req)
+        except Exception as e:
+            print(e)
+            raise
         return response.read()
 
-    # 下面的方法，不同的登录平台会有细微差别，需要继承基类后重写方法
-
-    def get_auth_url(self):  # 获取code
+    def get_auth_url(self):
         pass
 
-    def get_access_token(self, code):  # 获取access token
+    def get_access_token(self, code):
         pass
 
-    def get_open_id(self):  # 获取openid
+    def get_open_id(self):
         pass
 
-    def get_user_info(self):  # 获取用户信息
+    def get_user_info(self):
         pass
 
-    def get_email(self):  # 获取用户邮箱
+    def get_email(self):
         pass
 
 
-# Github类
 class OAuthGitHub(OAuthBase):
+    """github授权登陆"""
     def get_auth_url(self):
         params = {
             'client_id': self.client_id,
             'response_type': 'code',
             'redirect_uri': self.redirect_url,
             'scope': 'user:email',
-            'state': 1
+            'state': 1,
         }
-        url = 'https://github.com/login/oauth/authorize?%s' % urllib.parse.urlencode(params)
+        url = 'https://github.com/login/oauth/authorize?%s' % parse.urlencode(params)
         return url
 
     def get_access_token(self, code):
         params = {
-            'grant_type': 'authorization_code',
             'client_id': self.client_id,
             'client_secret': self.client_key,
             'code': code,
-            'redirect_url': self.redirect_url
+            'redirect_uri': self.redirect_url,
+            'scope': 'user:email',
         }
-        response = self._post('https://github.com/login/oauth/access_token', params)  # 此处为post方法
-        result = urllib.parse.parse_qs(response, True)
+        url = 'https://github.com/login/oauth/access_token'
+        response = self._post(url, params)
+        result = parse.parse_qs(response)
         self.access_token = result[b'access_token'][0]
         return self.access_token
-
-    # github不需要获取openid，因此不需要get_open_id()方法
 
     def get_user_info(self):
         params = {'access_token': self.access_token}
         response = self._get('https://api.github.com/user', params)
         result = json.loads(response.decode('utf-8'))
+        print('get_user_info: ', result)
         self.openid = result.get('id', '')
         return result
 
@@ -173,12 +177,16 @@ class OAuthGitHub(OAuthBase):
         params = {'access_token': self.access_token}
         response = self._get('https://api.github.com/user/emails', params)
         result = json.loads(response.decode('utf-8'))
+        print('get_email: ', result)
         return result[0]['email']
+    
 ```
 
 views.py
 
 ```python
+from django.shortcuts import render
+
 from django.shortcuts import redirect
 from django.conf import settings
 from authentication.models import User
@@ -201,8 +209,10 @@ def git_check(request):
     try:
         access_token = oauth_git.get_access_token(request_code)  # 获取access token
         time.sleep(0.1)  # 此处需要休息一下，避免发送urlopen的10060错误
-    except:  # 获取令牌失败，反馈失败信息
+    except Exception as e:  # 获取令牌失败，反馈失败信息
+        print(e)
         return redirect('home')
+    print('access_token: ', access_token)
     infos = oauth_git.get_user_info()  # 获取用户信息
     nickname = infos.get('login', '')
     image_url = infos.get('avatar_url', '')
@@ -217,7 +227,8 @@ def git_check(request):
     else:  # 否则尝试获取用户邮箱用于绑定账号
         try:
             email = oauth_git.get_email()
-        except:  # 若获取失败，则跳转到绑定用户界面，让用户手动输入邮箱
+        except Exception as e:  # 若获取失败，则跳转到绑定用户界面，让用户手动输入邮箱
+            print(e)
             return redirect('home')
     users = User.objects.filter(email=email)  # 若获取到邮箱，则查询是否存在本站用户
     if users:  # 若存在，则直接绑定
@@ -229,7 +240,7 @@ def git_check(request):
         pwd = str(uuid.uuid1())  # 随机设置用户密码
         user.set_password(pwd)
         user.save()
-    oauth = OAuth(user=user, openid=open_id, type=type)
+    oauth = OAuth(user=user, openid=open_id, type='1')
     oauth.save()  # 保存后登陆
     auth_login(request, user)
     return redirect('home')
@@ -239,23 +250,23 @@ def git_check(request):
 
 ## 1 图像基本属性
 
-位图与矢量图
+**位图与矢量图**
 
 图像主要分为两类：一类是位图，一类是矢量图。
 
 位图是由多个像素组成的，当放大位图时，可以看见图像被分成了很多色块（锯齿效果），而且放大的位图属于失真状态。我们平时拍的照片、扫描的图片等都属于位图。
 
-矢量图是通过数学公式计算获得的图像，它最大的特点是无论放大多少倍都不失真，而且文件小、分辨率高，缺点是难以表现色彩层次丰富的逼真图像效果。
+矢量图是通过数学公式计算(如: Matlab)获得的图像，它最大的特点是无论放大多少倍都不失真，而且文件小、分辨率高，缺点是难以表现色彩层次丰富的逼真图像效果。
 
-像素(px)：像素是构成位图图像最基本的单元，每个像素都有自己的颜色（RGB)，像素越多，颜色信息就越丰富，图像效果就越好
+**像素(px)**：像素是构成位图图像最基本的单元，每个像素都有自己的颜色（RGB)，像素越多，颜色信息就越丰富，图像效果就越好
 
-分辨率(dpi)：是单位长度内包含像素点的数量，通常以像素每英寸ppi(pixels per inch)为单位来表示图像分辨率的大小，例如分辨率为72ppi表示每英寸包含72个像素点，分辨率越高，包含的像素点就越多，图像就越清晰，但占用的存储空间就越大。分辨率分为屏幕分辨率和图像分辨率，例如：屏幕分辨率是1280×720，就是屏幕的水平方向上有1280个像素点，垂直方向上有720个像素点；一张图片分辨率是800×500，就是说图片在没有缩放的前提下，水平方向有800个像素点，垂直方向有500个像素点。
+**分辨率(dpi)**：是单位长度内包含像素点的数量，通常以像素每英寸ppi(pixels per inch)为单位来表示图像分辨率的大小，例如分辨率为72ppi表示每英寸包含72个像素点，分辨率越高，包含的像素点就越多，图像就越清晰，但占用的存储空间就越大。分辨率分为屏幕分辨率和图像分辨率，例如：屏幕分辨率是1280×720，就是屏幕的水平方向上有1280个像素点，垂直方向上有720个像素点；一张图片分辨率是800×500，就是说图片在没有缩放的前提下，水平方向有800个像素点，垂直方向有500个像素点。
 
-像素与分辨率的关系：二者关系密不可分，它们的组合决定了图像的质量。分辨率=图像水平方向的像素点数×图像垂直方向的像素点数。例如1英寸×1英寸，分辨率为100dpi的图像包含10000个像素（100像素×100像素）。
+**像素与分辨率的关系**：二者关系密不可分，它们的组合决定了图像的质量。分辨率=图像水平方向的像素点数×图像垂直方向的像素点数。例如1英寸×1英寸，分辨率为100dpi的图像包含10000个像素（100像素×100像素）。
 
-灰度值：指黑白图像中点的颜色深度，范围一般从0到255，白色为255，黑色为0，故黑白图片也称灰度图像。
+**灰度值**：指黑白图像中点的颜色深度，范围一般从0到255，白色为255，黑色为0，故黑白图片也称灰度图像。
 
-RGB色彩模式是工业界的一种颜色标准，是通过对红(R)、绿(G)、蓝(B)三个颜色通道的变化以及它们相互之间的叠加来得到各式各样的颜色的，RGB即是代表红、绿、蓝三个通道的颜色，这个标准几乎包括了人类视力所能感知的所有颜色，是目前运用最广的颜色系统之一。
+**RGB:**RGB色彩模式是工业界的一种颜色标准，是通过对红(R)、绿(G)、蓝(B)三个颜色通道的变化以及它们相互之间的叠加来得到各式各样的颜色的，RGB即是代表红、绿、蓝三个通道的颜色，这个标准几乎包括了人类视力所能感知的所有颜色，是目前运用最广的颜色系统之一。
 
 灰度值与RGB转换公式（简化版本):
 
