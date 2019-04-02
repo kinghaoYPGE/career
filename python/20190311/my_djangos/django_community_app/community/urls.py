@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('user_profile.urls')),
     path('', include('questions.urls')),
     path('', include('search.urls')),
+    path('', include('oauth.urls')),
 ]

@@ -29,7 +29,7 @@
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label for="{{ field.label }}">{{ field.label }}</label>
                     {{ field  }}
-                    {% if field.help_text %}git
+                    {% if field.help_text %}
                         <span class="help-block">{{ field.help_text|safe }}</span>
                     {% endif %}
                     {% for error in field.errors %}
@@ -37,6 +37,7 @@
                     {% endfor %}
                 </div>
                 {% endfor %}
+                <img src="{% url 'authentication:code' %}" onclick="this.src=this.src+'?'+Math.random()" /><br><br>
                 <button type="submit" class="btn btn-primary">Log in</button>
                 <a href="{% url 'authentication:signup' %}" class="btn btn-link">{% trans 'Sign up' %}</a>
             </form>

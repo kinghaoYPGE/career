@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'oauth',
     'search',
     'questions',
     'user_profile',
@@ -147,3 +148,8 @@ LOGOUT_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+#Oauth
+#github
+GITHUB_APP_ID = '99587e2b08b7c918e17d'
+GITHUB_KEY = 'b4bb0ab4f03c350d0b03519b6610f7f25dc0f6fd'
+GITHUB_CALLBACK_URL = 'http://127.0.0.1:8000/oauth/github_check'  #填写你的回调地址

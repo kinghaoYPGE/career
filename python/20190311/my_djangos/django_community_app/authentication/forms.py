@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from .models import User
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def forbidden_username_validator(value):
@@ -99,3 +100,14 @@ class SignUpForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         user.save()
         return user
+
+
+class LoginForm(AuthenticationForm):
+    verify_code = forms.CharField(
+        widget=forms.TextInput(),
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'verify_code']
+
