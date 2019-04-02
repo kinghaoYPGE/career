@@ -24,7 +24,7 @@ import uuid
 
 from tornado.options import define, options, parse_command_line
 
-define("port", default=8888, help="run on the given port", type=int)
+define("port", default=8089, help="run on the given port", type=int)
 define("debug", default=True, help="run in debug mode")
 
 
