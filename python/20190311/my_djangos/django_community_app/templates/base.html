@@ -59,6 +59,16 @@
                         {% else %}
                             <li><a href="{% url 'authentication:signup' %}">{% trans 'Sign up' %}</a></li>
                             <li><a href="{% url 'authentication:login' %}">{% trans 'Log in' %}</a></li>
+                            <li></li>
+                            <li>
+                                <div id="oauth_button">
+                                    <div class="pull-right">
+                                        <a href="{% url 'oauth:github_login' %}"><img width="15px" height="15px" class="type" src="{% static 'img/github.png' %}" alt="GITHUB"/></a>&nbsp;
+                                        <a href="#"><img width="15px" height="15px" class="type" src="{% static 'img/QQ.png' %}" alt="QQ"/></a>&nbsp;
+                                        <a href="#"><img width="15px" height="15px" class="type" src="{% static 'img/weibo.png' %}" alt="WEIBO"/></a>
+                                    </div>
+                                </div>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>

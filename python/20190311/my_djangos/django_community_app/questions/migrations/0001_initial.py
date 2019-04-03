@@ -32,11 +32,11 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField(max_length=2000)),
                 ('create_date', models.DateTimeField(auto_now_add=True)),
-                ('update_time', models.DateTimeField(auto_now=True)),
+                ('update_date', models.DateTimeField(auto_now=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'ordering': ['-update_time'],
+                'ordering': ['-update_date'],
             },
         ),
         migrations.AddField(
