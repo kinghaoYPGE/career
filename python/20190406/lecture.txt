@@ -1,0 +1,13 @@
+1 简历模板编写
+2 招聘网站注册
+（建议使用手机号注册或绑定手机号)
+  2.1 https://www.zhaopin.com/
+  2.2 https://www.51job.com/
+  2.3 https://www.lagou.com/
+  2.4 https://www.zhipin.com/
+3 线上投递简历
+  3.1 在线填写简历
+  3.2 上传个人简历
+  3.3 浏览招聘岗位(建议搜索关键字 python+'地点')
+  3.4 找到适合岗位，主动投递简历
+
